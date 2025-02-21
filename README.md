@@ -16,9 +16,8 @@ Technologies utilized in this project include:
 
 ## Table of Contents
 
- - Install
- - Usage
- - Documentation
+ - [Install](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#install)
+ - [Usage](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#usage)
 
 ## Install
 
