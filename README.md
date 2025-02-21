@@ -4,7 +4,7 @@ By **Natalia López Gallego**
 
 ## Overview
 
-Starting with a CSV file containing candidate data from selection processes, an application was developed to migrate this data into a relational database. Then a detailed analysis was performed on the database-stored data, and various insightful chart visualizations were generated.
+This project involves efficient data management and advanced visualization techniques. Starting with a CSV file containing candidate data from selection processes, an application was developed to migrate this data into a relational database. Detailed analysis was performed on the database-stored data, and various insightful chart visualizations were generated.
 
 Technologies utilized in this project include:
 
@@ -17,12 +17,16 @@ Technologies utilized in this project include:
 ## Table of Contents
 
  - [Install](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#install)
+	 - Python libraries
+	 - Installing WSL 2 and Docker on Ubuntu (WSL 2)
  - [Usage](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#usage)
+ - Documentation
 
 ## Install
 
+### Requirements
 
-### Requirements: Python libraries
+#### Python libraries
 
 1. **Open a command prompt or terminal window**:
    - To access your command prompt or terminal window, search for "cmd" or "Terminal" in your system's search bar and open it.
@@ -74,7 +78,6 @@ Technologies utilized in this project include:
      ```
 
 
-### README Section
 
 #### Installing WSL 2 and Docker on Ubuntu (WSL 2)
 
@@ -149,5 +152,3 @@ Technologies utilized in this project include:
          technical_interview VARCHAR(50)
      );
      ```
-
-## Usage
