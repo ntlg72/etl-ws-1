@@ -17,8 +17,9 @@ Technologies utilized in this project include:
 ## Table of Contents
 
  - [Install](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#install)
-	 - Python libraries
-	 - Installing WSL 2 and Docker on Ubuntu (WSL 2)
+	 - [Python libraries](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#python-libraries)
+	 - [Installing WSL 2 and Docker on Ubuntu (WSL 2)](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#installing-wsl-2-and-docker-on-ubuntu-wsl-2)
+	 - [Setting Up MySQL Database with Docker](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#setting-up-mysql-database-with-docker)
  - [Usage](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#usage)
  - Documentation
 
