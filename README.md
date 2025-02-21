@@ -22,4 +22,132 @@ Technologies utilized in this project include:
 ## Install
 
 
+### Requirements: Python libraries
+
+1. **Open a command prompt or terminal window**:
+   - To access your command prompt or terminal window, search for "cmd" or "Terminal" in your system's search bar and open it.
+
+2. **Navigate to the project directory**:
+   - Change directory to where your project is located:
+     ```bash
+     cd path/to/your/project
+     ```
+
+3. **Create and activate a virtual environment**:
+   - In the project directory, run the following commands:
+     ```bash
+     python -m venv venv
+     ```
+     ```bash
+     source venv/bin/activate  # For Mac and Linux
+     ```
+     ```bash
+     venv\Scripts\activate  # For Windows
+     ```
+
+4. **Install the required dependencies**:
+   - Make sure you have a `requirements.txt` file in your project directory that lists all your dependencies. Then, run:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+5. **Install additional packages**:
+   - To install SQLAlchemy, run:
+     ```bash
+     pip install SQLAlchemy
+     ```
+   - To install the MySQL driver, run:
+     ```bash
+     pip install mysql-connector-python
+     ```
+
+6. **Run the application**:
+   - Start your application by running the following command:
+     ```bash
+     python app.py
+     ```
+
+7. **Deactivate the virtual environment**:
+   - When you're done, you can deactivate the virtual environment by running:
+     ```bash
+     deactivate
+     ```
+
+
+### README Section
+
+#### Installing WSL 2 and Docker on Ubuntu (WSL 2)
+
+1. **Enable WSL 2:**
+   - Open PowerShell as Administrator and run the following command to enable WSL:
+     ```powershell
+     wsl --install
+     ```
+   - Set WSL 2 as the default version:
+     ```powershell
+     wsl --set-default-version 2
+     ```
+
+2. **Install Ubuntu:**
+   - Open the Microsoft Store, search for "Ubuntu", and install your preferred version (e.g., Ubuntu 20.04 LTS).
+   - Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
+
+3. **Install Docker:**
+   - Update your package list:
+     ```bash
+     sudo apt update
+     sudo apt upgrade
+     ```
+   - Download and run the Docker installation script:
+     ```bash
+     curl -fsSL https://get.docker.com -o get-docker.sh
+     sudo sh get-docker.sh
+     ```
+   - Verify that Docker is working correctly:
+     ```bash
+     docker run hello-world
+     ```
+   - This command will download a Docker test image and run a container that will print a success message if everything is set up correctly.
+
+#### Setting Up MySQL Database with Docker
+
+1. **Pull MySQL Image:**
+   - Open your terminal and run the following command to pull the MySQL image:
+     ```bash
+     docker pull mysql
+     ```
+
+2. **Run MySQL Container:**
+   - Run the MySQL container and create a new database named `ws_001`:
+     ```bash
+     docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -p 3306:3306 -d mysql
+     ```
+
+3. **Access MySQL Container:**
+   - Access the MySQL container's shell:
+     ```bash
+     docker exec -it mysql-container mysql -uroot -pyour_password
+     ```
+
+4. **Create the `candidates` Table:**
+   - Once inside the MySQL shell, switch to the `ws_001` database:
+     ```sql
+     USE ws_001;
+     ```
+   - Create the `candidates` table:
+     ```sql
+     CREATE TABLE candidates (
+         first_name VARCHAR(50),
+         last_name VARCHAR(50),
+         email VARCHAR(100),
+         country VARCHAR(50),
+         application_date DATE,
+         yoe INT,
+         seniority VARCHAR(50),
+         technology VARCHAR(50),
+         code_challenge_score INT,
+         technical_interview VARCHAR(50)
+     );
+     ```
+
 ## Usage
