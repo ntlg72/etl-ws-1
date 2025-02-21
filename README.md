@@ -4,7 +4,7 @@ By **Natalia López Gallego**
 
 ## Overview
 
-This project involves efficient data management and advanced visualization techniques. Starting with a CSV file containing candidate data from selection processes, an application was developed to migrate this data into a relational database. Detailed analysis was performed on the database-stored data, and various insightful chart visualizations were generated.
+Starting with a CSV file containing candidate data from selection processes, an application was developed to migrate this data into a relational database. Then a detailed analysis was performed on the database-stored data, and various insightful chart visualizations were generated.
 
 Technologies utilized in this project include:
 
@@ -16,9 +16,8 @@ Technologies utilized in this project include:
 
 ## Table of Contents
 
- - Install
- - Usage
- - Documentation
+ - [Install](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#install)
+ - [Usage](https://github.com/ntlg72/etl-ws-1?tab=readme-ov-file#usage)
 
 ## Install
 
