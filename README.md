@@ -94,22 +94,18 @@ Technologies utilized in this project include:
    - Open the Microsoft Store, search for "Ubuntu", and install your preferred version (e.g., Ubuntu 20.04 LTS).
    - Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
 
-3. **Install Docker:**
-   - Update your package list:
-     ```bash
-     sudo apt update
-     sudo apt upgrade
-     ```
-   - Download and run the Docker installation script:
-     ```bash
-     curl -fsSL https://get.docker.com -o get-docker.sh
-     sudo sh get-docker.sh
-     ```
-   - Verify that Docker is working correctly:
-     ```bash
-     docker run hello-world
-     ```
-   - This command will download a Docker test image and run a container that will print a success message if everything is set up correctly.
+3.  **Turn on Docker Desktop WSL 2:**  
+
+**Important:**  To avoid any potential conflicts with using WSL 2 on Docker Desktop, you must uninstall any previous versions of Docker Engine and CLI installed directly through Linux distributions before installing Docker Desktop.
+
+ -  Download and install the latest version of Docker Desktop for Windows.
+ -  Follow the usual installation instructions to install Docker Desktop. Depending on which version of Windows you are using, Docker Desktop may prompt you to turn on WSL 2 during installation. Read the information displayed on the screen and turn on the WSL 2 feature to continue.
+ -  Start Docker Desktop from the Windows Start menu.
+ -  Navigate to **Settings**.
+ -  From the **General**  tab, select **Use WSL 2 based engine**.
+ -  If you have installed Docker Desktop on a system that supports WSL 2, this option is turned on by default.
+ -  Select **Apply & Restart**.
+ -  Now docker commands work from Windows using the new WSL 2 engine.
 
 ### Setting Up MySQL Database with Docker
 
@@ -151,3 +147,11 @@ Technologies utilized in this project include:
          technical_interview VARCHAR(50)
      );
      ```
+
+
+
+## Usage
+
+
+
+## Documentation
