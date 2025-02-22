@@ -25,9 +25,7 @@ Technologies utilized in this project include:
 
 ## Install
 
-### Requirements
-
-#### Python libraries
+### Python libraries
 
 1. **Open a command prompt or terminal window**:
    - To access your command prompt or terminal window, search for "cmd" or "Terminal" in your system's search bar and open it.
@@ -80,7 +78,7 @@ Technologies utilized in this project include:
 
 
 
-#### Installing WSL 2 and Docker on Ubuntu (WSL 2)
+### Installing WSL 2 and Docker on Ubuntu (WSL 2)
 
 1. **Enable WSL 2:**
    - Open PowerShell as Administrator and run the following command to enable WSL:
@@ -113,7 +111,7 @@ Technologies utilized in this project include:
      ```
    - This command will download a Docker test image and run a container that will print a success message if everything is set up correctly.
 
-#### Setting Up MySQL Database with Docker
+### Setting Up MySQL Database with Docker
 
 1. **Pull MySQL Image:**
    - Open your terminal and run the following command to pull the MySQL image:
