@@ -77,11 +77,11 @@ Technologies utilized in this project include:
      ```
 
 
-
 ### Installing WSL 2 and Docker on Ubuntu (WSL 2)
 
+
 1. **Enable WSL 2:**
-   - Open PowerShell as Administrator and run the following command to enable WSL:
+   - Open PowerShell as Administrator and run:
      ```powershell
      wsl --install
      ```
@@ -91,21 +91,35 @@ Technologies utilized in this project include:
      ```
 
 2. **Install Ubuntu:**
-   - Open the Microsoft Store, search for "Ubuntu", and install your preferred version (e.g., Ubuntu 20.04 LTS).
+   - Run the following command in PowerShell:
+     ```powershell
+     wsl.exe --install -d Ubuntu-24.04
+     ```
    - Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
 
-3.  **Turn on Docker Desktop WSL 2:**  
+3. **Turn on Docker Desktop WSL 2:**
 
-**Important:**  To avoid any potential conflicts with using WSL 2 on Docker Desktop, you must uninstall any previous versions of Docker Engine and CLI installed directly through Linux distributions before installing Docker Desktop.
+   **Important:** Uninstall any previous versions of Docker Engine and CLI installed through Linux distributions.
 
- -  Download and install the latest version of Docker Desktop for Windows.
- -  Follow the usual installation instructions to install Docker Desktop. Depending on which version of Windows you are using, Docker Desktop may prompt you to turn on WSL 2 during installation. Read the information displayed on the screen and turn on the WSL 2 feature to continue.
- -  Start Docker Desktop from the Windows Start menu.
- -  Navigate to **Settings**.
- -  From the **General**  tab, select **Use WSL 2 based engine**.
- -  If you have installed Docker Desktop on a system that supports WSL 2, this option is turned on by default.
- -  Select **Apply & Restart**.
- -  Now docker commands work from Windows using the new WSL 2 engine.
+   - Download and install the latest Docker Desktop for Windows.
+   - Follow the installation instructions and enable WSL 2 when prompted.
+   - Start Docker Desktop.
+   - Navigate to **Settings** > **General** and select **Use WSL 2 based engine**.
+   - Click **Apply & Restart**.
+   - 
+4.  **Confirm Docker Installation:**  
+- Open a WSL distribution (e.g., Ubuntu) and display the version and build number by entering:
+
+	```bash
+     docker --version
+     ```
+     - Test that your installation works correctly by running a simple built-in Docker image:
+     ```bash
+     docker run hello-world
+     ```
+     
+Now Docker commands work from Windows using the new WSL 2 engine.
+
 
 ### Setting Up MySQL Database with Docker
 
@@ -118,13 +132,15 @@ Technologies utilized in this project include:
 2. **Run MySQL Container:**
    - Run the MySQL container and create a new database named `ws_001`:
      ```bash
-     docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -p 3306:3306 -d mysql
+     docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -d mysql
      ```
+
+Where `mysql` is the name you want to assign to your container, and `your_password` is the password to be set for the MySQL root user.
 
 3. **Access MySQL Container:**
    - Access the MySQL container's shell:
      ```bash
-     docker exec -it mysql-container mysql -uroot -pyour_password
+     docker exec -it mysql-container mysql -u root -p 
      ```
 
 4. **Create the `candidates` Table:**
