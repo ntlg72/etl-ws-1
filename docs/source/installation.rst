@@ -76,7 +76,7 @@ Confirming Docker Installation
 
 3. Test the installation by running a simple built-in Docker image: ``docker run hello-world``
 
-.. image:: https://postimg.cc/9wFfh7vb
+.. image:: https://i.postimg.cc/NFR2R8D3/Captura-de-pantalla-2025-02-22-180614.png
 
 Now Docker commands work from Windows using the new WSL 2 engine.
 
