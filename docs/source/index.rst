@@ -34,6 +34,7 @@ Steps Involved
    - **Purpose:** To read and understand the structure of the CSV file containing candidate data.
    - **Process:** Use Python's pandas library to load the CSV file and perform initial data exploration.
    - **Example:**
+
      ```python
      import pandas as pd
 
@@ -48,6 +49,7 @@ Steps Involved
    - **Purpose:** To move the data from the CSV file to a MySQL database.
    - **Process:** Establish a connection to the MySQL database using SQLAlchemy, create a table to store the candidate data, and insert the data into the database.
    - **Example:**
+
      ```python
      from sqlalchemy import create_engine
 
@@ -62,6 +64,7 @@ Steps Involved
    - **Purpose:** To analyze the data stored in the MySQL database to derive meaningful insights.
    - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
    - **Example:**
+
      ```python
      # Query the database
      query = 'SELECT * FROM candidates'
@@ -83,7 +86,8 @@ Contents
 
 .. toctree::
 
+   installation
    ingestion
    migration
    analysis
-   visutalization
+   visualization
