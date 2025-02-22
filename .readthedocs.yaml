@@ -17,4 +17,4 @@ sphinx:
 python:  # Correct indentation here
   install:
     - requirements: requirements.txt   # Project requirements
-    - requirements: docs/source/requirements.txt # Documentation requirements
+    - requirements: docs/requirements.txt # Documentation requirements
