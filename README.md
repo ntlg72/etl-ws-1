@@ -155,10 +155,10 @@ Where `mysql` is the name you want to assign to your container, and `your_passwo
    - Create the `candidates` table:
      ```sql
      CREATE TABLE candidates (
-         first_name VARCHAR(50),
-         last_name VARCHAR(50),
+         first_name VARCHAR(100),
+         last_name VARCHAR(100),
          email VARCHAR(100),
-         country VARCHAR(50),
+         country VARCHAR(100),
          application_date DATE,
          yoe INT,
          seniority VARCHAR(50),
