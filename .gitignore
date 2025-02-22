@@ -1,2 +1,5 @@
 #Ignore virtual enviroment
 venv/
+
+#Ignore MySQL credentials
+.env

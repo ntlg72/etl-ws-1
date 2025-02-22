@@ -63,7 +63,11 @@ Technologies utilized in this project include:
      ```bash
      pip install mysql-connector-python
      ```
-
+   - To install python-dotenv, run:
+	     ```bash
+	     pip install python-dotenv
+	     ```
+       
 6. **Run the application**:
    - Start your application by running the following command:
      ```bash
@@ -132,7 +136,7 @@ Now Docker commands work from Windows using the new WSL 2 engine.
 2. **Run MySQL Container:**
    - Run the MySQL container and create a new database named `ws_001`:
      ```bash
-     docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -d mysql
+     docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=miy4y34h -e MYSQL_DATABASE=ws_001 -p 3307:3306  -d mysql
      ```
 
 Where `mysql` is the name you want to assign to your container, and `your_password` is the password to be set for the MySQL root user.
