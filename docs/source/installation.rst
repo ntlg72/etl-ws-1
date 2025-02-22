@@ -26,10 +26,7 @@ The "(venv)" indicates that the enviroment is activated.
 
 .. image:: https://i.postimg.cc/T1dCsPsH/Captura-de-pantalla-2025-02-22-172014.png
 
-
-``deactivate``
-
-The absence of the "(venv)" indicates that the enviroment is deactivated.
+To deactive use the command ``deactivate``.The absence of the "(venv)" indicates that the enviroment is deactivated.
 
 3. The project directory contains a "requirements.txt" file in that lists all the dependencies needed. To install them, the ``pip install -r requirements.txt`` is run while the enviroment is activated. With the command pip list we can check that the dependencies have been installed.
 
@@ -74,7 +71,12 @@ Confirming Docker Installation
 
 1. Open a WSL distribution (Ubuntu-24.04).
 2. Display the version and build number by entering: ``docker --version``
+
+.. image:: https://i.postimg.cc/sXkZBHYP/Captura-de-pantalla-2025-02-22-180409.png
+
 3. Test the installation by running a simple built-in Docker image: ``docker run hello-world``
+
+.. image:: https://postimg.cc/9wFfh7vb
 
 Now Docker commands work from Windows using the new WSL 2 engine.
 
