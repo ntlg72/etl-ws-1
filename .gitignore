@@ -3,5 +3,3 @@ venv/
 
 #Ignore MySQL credentials
 .env
-
-README.md
