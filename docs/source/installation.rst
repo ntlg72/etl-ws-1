@@ -39,12 +39,14 @@ Follow these steps to install **etl-ws-1**:
        pip install -r requirements.txt
 
 Python Virtual Environment & Dependencies
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Virtual environments are essential for modern Python development, providing isolated spaces for each project to manage dependencies and avoid conflicts. By creating a dedicated virtual environment, projects gain their own set of installed packages, separate from the system's Python installation and other projects, preventing version clashes and namespace pollution. This isolation enables reproducible builds and simplifies project setup and deployment.
 
 Implementation
---------------
+""""""""""""""
+
 
 1. In the project directory, use the following command to create the virtual environment:
 
@@ -74,7 +76,7 @@ Implementation
        pip list
 
 Installing WSL 2 and Docker for MySQL Deployment
-------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 WSL 2 (Windows Subsystem for Linux 2) provides a lightweight, virtualized Linux environment that integrates seamlessly with Windows, enabling developers to run Linux based tools and applications with improved performance and compatibility. Using a Dockerized MySQL image within WSL 2 allows for consistent, isolated, and portable development environments, which can be easily managed and shared. This approach ensures that the database setup is consistent across different development machines and avoids potential conflicts with other local services or applications. 
 
@@ -87,7 +89,8 @@ WSL 2 (Windows Subsystem for Linux 2) provides a lightweight, virtualized Linux 
 
 
 Enabling WSL 2
---------------
+""""""""""""""
+
 
 1. Open PowerShell as Administrator.
 2. Run:
@@ -103,7 +106,7 @@ Enabling WSL 2
        wsl --set-default-version 2
 
 Installing Ubuntu
------------------
+"""""""""""""""""
 
 1. Run the following command in PowerShell:
 
@@ -114,9 +117,9 @@ Installing Ubuntu
 2. Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
 
 Turning on Docker Desktop WSL 2
--------------------------------
+"""""""""""""""""""""""""""""""
 
-Important: Uninstall any previous versions of Docker Engine and CLI installed through Linux distributions.
+**Important:** Uninstall any previous versions of Docker Engine and CLI installed through Linux distributions.
 
 1. Download and install the latest Docker Desktop for Windows.
 2. Follow the installation instructions and enable WSL 2 when prompted.
@@ -125,7 +128,7 @@ Important: Uninstall any previous versions of Docker Engine and CLI installed th
 5. Click **Apply & Restart**.
 
 Confirming Docker Installation
-------------------------------
+""""""""""""""""""""""""""""""
 
 1. Open a WSL distribution (Ubuntu-24.04).
 2. Display the version and build number by entering:
