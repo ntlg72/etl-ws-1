@@ -74,12 +74,13 @@ To establish a connection to the MySQL database, environment variables are loade
 
 
 ..  code-block:: python
+    :caption: src/connection/db_utils.py
 
     import os
     from dotenv import load_dotenv
     from sqlalchemy import create_engine
 
-   def get_db_connection():
+    def get_db_connection():
         load_dotenv()
         user = os.getenv('MYSQL_USER')
         password = os.getenv('MYSQL_PASSWORD')
@@ -105,6 +106,7 @@ To establish a connection to the MySQL database, environment variables are loade
 The ``setup_env.py`` module handles the environment setup, including adding the ``src`` directory to the PYTHONPATH. This ensures that the package modules can be imported easily.
 
 ..  code-block:: python
+    :caption: src/connection/setup_env.py
 
    import sys
    import os
@@ -124,6 +126,7 @@ Usage in Notebooks
 To use the ``connection`` package and its modules in the project´s Jupyter notebooks, the following steps are to be used:
 
 ..  code-block:: python
+    :caption: Running the configuration script at the beginning of the Jupyter notebooks
 
    # Import the setup script
    from src.mypackage.setup_env import setup_environment
