@@ -65,7 +65,17 @@ Steps Involved
          # Write the data to the MySQL table
          df.to_sql(name='candidates', con=engine, if_exists='replace', index=False)
  
+ 
+     ..  code-block:: python
+         
+         import pandas as pd
 
+         # Load the CSV file
+         df = pd.read_csv('candidates.csv')
+
+         # Display the first few rows
+         print(df.head())
+  
 3. **Data Analysis:**
 
    - **Purpose:** To analyze the data stored in the MySQL database to derive meaningful insights.
@@ -81,8 +91,16 @@ Steps Involved
          # Perform analysis (e.g., calculate average years of experience)
          avg_yoe = df['yoe'].mean()
          print(f'Average Years of Experience: {avg_yoe}')
-         
 
+     ..  code-block:: python
+         
+         import pandas as pd
+
+         # Load the CSV file
+         df = pd.read_csv('candidates.csv')
+
+         # Display the first few rows
+         print(df.head())
  
 
 4. **Data Visualization:**
