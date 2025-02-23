@@ -97,20 +97,13 @@ Contents
 --------
 
 .. toctree::
+   :caption: Menu
    :hidden:
 
-   installation
-   ingestion
-   migration
-   analysis
-   visualization
+   `Installation <installation>`_
+   `Ingestion <ingestion>`_
+   `Migration <migration>`_
+   `Analysis <analysis>`_
+   `Visualization <visualization>`_
 
-.. toctree::
-  :caption: Menu
-
-   `Installation <https://etl-ws-1.readthedocs.io/en/latest/installation.html#installation>`_
-   `Ingestion <https://etl-ws-1.readthedocs.io/en/latest/ingestion.html#data-ingestion>`_
-   `Migration <https://example.com/migration>`_
-   `Analysis <https://example.com/analysis>`_
-   `Visualization <https://example.com/visualization>`_
 
