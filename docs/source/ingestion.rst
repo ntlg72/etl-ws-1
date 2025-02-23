@@ -74,30 +74,29 @@ The db_utils.py module contains utility functions for database operations. These
 To establish a connection to the MySQL database, environment variables are loaded from the .env file, which securely stores database credentials. The sqlalchemy library's ``create_engine`` function is used to create a database engine instance, which facilitates the connection to the MySQL database. This approach ensures that the database credentials are not hard-coded into the script, enhancing security. 
 
 
-..  code-block:: python
-    :caption: src/connection/db_utils.py
+    ..  code-block:: python
 
-    import os
-    from dotenv import load_dotenv
-    from sqlalchemy import create_engine
-
-   def get_db_connection():
-        load_dotenv()
-        user = os.getenv('MYSQL_USER')
-        password = os.getenv('MYSQL_PASSWORD')
-        host = os.getenv('MYSQL_HOST')
-        port = os.getenv('MYSQL_PORT')
-        dbname = os.getenv('MYSQL_DB')
-        db_url = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}"
-
-    try:
-        engine = create_engine(db_url)
-        connection = engine.connect()
-        print("Connected to the database successfully")
-        return connection
-    except Exception as e:
-        print(f"Error: {e}")
-        return None
+          import os
+          from dotenv import load_dotenv
+          from sqlalchemy import create_engine
+      
+         def get_db_connection():
+              load_dotenv()
+              user = os.getenv('MYSQL_USER')
+              password = os.getenv('MYSQL_PASSWORD')
+              host = os.getenv('MYSQL_HOST')
+              port = os.getenv('MYSQL_PORT')
+              dbname = os.getenv('MYSQL_DB')
+              db_url = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}"
+      
+          try:
+              engine = create_engine(db_url)
+              connection = engine.connect()
+              print("Connected to the database successfully")
+              return connection
+          except Exception as e:
+              print(f"Error: {e}")
+              return None
 
 
 
@@ -106,19 +105,18 @@ setup_env.py module
 
 The setup_env.py module handles the environment setup, including adding the ``src`` directory to the PYTHONPATH. This ensures that the package modules can be imported easily.
 
-..  code-block:: python
-    :caption: src/connection/setup_env.py
-
-   import sys
-   import os
-
-   def setup_pythonpath():
-       # Add the 'src' directory to the PYTHONPATH
-       sys.path.append(os.path.abspath('../src'))
-
-   def setup_environment():
-       setup_pythonpath()
-       print("Environment setup complete.")
+    ..  code-block:: python
+      
+         import sys
+         import os
+      
+         def setup_pythonpath():
+             # Add the 'src' directory to the PYTHONPATH
+             sys.path.append(os.path.abspath('../src'))
+      
+         def setup_environment():
+             setup_pythonpath()
+             print("Environment setup complete.")
 
 
 Usage in Notebooks
@@ -126,16 +124,15 @@ Usage in Notebooks
 
 To use the ``connection`` package and its modules in the project´s Jupyter notebooks, the following code is used:
 
-..  code-block:: python
-    :caption: Running the configuration script at the beginning of the Jupyter notebooks
+    ..  code-block:: python
 
-   # Import the setup script
-   from src.mypackage.setup_env import setup_environment
-
-   # Run the setup script
-   setup_environment()
-
-
+         # Import the setup script
+         from src.mypackage.setup_env import setup_environment
+               
+         # Run the setup script
+         setup_environment()
+      
+      
 .. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
    :align: center
    :width: 600px 
@@ -166,13 +163,14 @@ The code used in this step defines a function `pandas_to_mysql_type` that sugges
 
     The function handles integer, floating-point, datetime, boolean, categorical, and string types, providing a suggested MySQL type for each.  
 
+The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
 
 .. image:: https://i.postimg.cc/jjjZD6dk/Captura-de-pantalla-2025-02-23-002836.png
    :align: center
    :width: 600px 
 
 
-The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
+
 
 Profiling the lenght of numerical values
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,12 +178,11 @@ Profiling the lenght of numerical values
 The code used in this step uses the Pandas DataFrame df to display the maximum and minimum values for its numeric columns.  ``df.max(numeric_only=True)`` calculates and prints the maximum value for each column that has a numeric data type. The numeric_only=True argument ensures that only numeric columns are considered, preventing errors if the DataFrame contains non-numeric data. 
 
 
+The resulting information is useful for understanding the range of values in the numeric data, which is crucial for choosing appropriate data types for database storage.
+
 .. image:: https://i.postimg.cc/C5pGsbS0/Captura-de-pantalla-2025-02-23-003006.png
    :align: center
    :width: 600px 
-
-
-The resulting information is useful for understanding the range of values in the numeric data, which is crucial for choosing appropriate data types for database storage.
 
 
 
@@ -198,11 +195,12 @@ Then, it calculates the length of each string in these selected columns using ``
 
 - The ``.applymap()`` function applies the ``len(str(x))`` function to every element in the DataFrame, converting each element to a string (in case it's not already) and then getting its length.  Finally, it calculates and prints the maximum length for each text column using ``.max()``. 
 
+The resulting information is valuable for database design (choosing appropriate VARCHAR or TEXT sizes) 
 
 .. image:: https://i.postimg.cc/gkDV3w59/Captura-de-pantalla-2025-02-23-003019.png
    :align: center
    :width: 600px 
 
 
-The resulting information is valuable for database design (choosing appropriate VARCHAR or TEXT sizes) 
+
 

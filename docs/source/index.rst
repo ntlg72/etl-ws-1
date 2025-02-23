@@ -1,4 +1,5 @@
-Workshop -001: Data engineer
+
+Workshop - 001
 =============================
 
 By **Natalia López Gallego**
@@ -31,63 +32,79 @@ Steps Involved
 --------------
 
 1. **Data Ingestion:**
+   
    - **Purpose:** To read and understand the structure of the CSV file containing candidate data.
    - **Process:** Use Python's pandas library to load the CSV file and perform initial data exploration.
-   - **Example:**
+   - For example,
 
-     ```python
-     import pandas as pd
+     ..  code-block:: python
+         
+         import pandas as pd
 
-     # Load the CSV file
-     df = pd.read_csv('candidates.csv')
+         # Load the CSV file
+         df = pd.read_csv('candidates.csv')
 
-     # Display the first few rows
-     print(df.head())
-     ```
+         # Display the first few rows
+         print(df.head())
+  
 
 2. **Data Migration:**
+
    - **Purpose:** To move the data from the CSV file to a MySQL database.
    - **Process:** Establish a connection to the MySQL database using SQLAlchemy, create a table to store the candidate data, and insert the data into the database.
-   - **Example:**
+   - For example,
 
-     ```python
-     from sqlalchemy import create_engine
+     ..  code-block:: python
+         
+         from sqlalchemy import create_engine
 
-     # Create a connection to the MySQL database
-     engine = create_engine('mysql+mysqlconnector://user:password@localhost/ws_001')
+         # Create a connection to the MySQL database
+         engine = create_engine('mysql+mysqlconnector://user:password@localhost/ws_001')
 
-     # Write the data to the MySQL table
-     df.to_sql(name='candidates', con=engine, if_exists='replace', index=False)
-     ```
 
+         # Write the data to the MySQL table
+         df.to_sql(name='candidates', con=engine, if_exists='replace', index=False)
+ 
+
+  
 3. **Data Analysis:**
+
    - **Purpose:** To analyze the data stored in the MySQL database to derive meaningful insights.
    - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
-   - **Example:**
+   - For example,
 
-     ```python
-     # Query the database
-     query = 'SELECT * FROM candidates'
-     df = pd.read_sql(query, engine)
+     ..  code-block:: python
+         
+         # Query the database
+         query = 'SELECT * FROM candidates'
+         df = pd.read_sql(query, engine)
 
-     # Perform analysis (e.g., calculate average years of experience)
-     avg_yoe = df['yoe'].mean()
-     print(f'Average Years of Experience: {avg_yoe}')
-     ```
+         # Perform analysis (e.g., calculate average years of experience)
+         avg_yoe = df['yoe'].mean()
+         print(f'Average Years of Experience: {avg_yoe}')
+
+ 
 
 4. **Data Visualization:**
-   - **Purpose:** To create visualizations that represent the insights derived from the data analysis.
-   - **Process:** Use visualization libraries like Matplotlib or Seaborn
+
+   - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
+   - The visualizations expected are:
+
+      - Hires by technology (pie chart)
+      - Hires by year (horizontal bar chart)
+      - Hires by seniority (bar chart)
+      - Hires by country over years (USA, Brazil, Colombia, and Ecuador only)(multiline chart)    
+   
 
 
 
-Contents
---------
+ .. toctree::
+   :titlesonly:
 
-.. toctree::
+   Install <installation>
+   1. Data ingestion <ingestion>
+   2. Data migration <migration>
+   3. Data analysis <analysis>
+   4. Data visualization <visualization>
 
-   installation
-   ingestion
-   migration
-   analysis
-   visualization
+
