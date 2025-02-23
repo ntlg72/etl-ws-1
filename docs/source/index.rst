@@ -104,3 +104,13 @@ Contents
    migration
    analysis
    visualization
+
+.. toctree::
+   :caption: Menu
+
+   installation
+   ingestion
+   migration
+   analysis
+   visualization
+
