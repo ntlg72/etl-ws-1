@@ -133,9 +133,9 @@ To use the ``connection`` package and its modules in the project´s Jupyter note
          setup_environment()
       
       
-      .. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
-         :align: center
-         :width: 600px 
+.. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
+   :align: center
+   :width: 600px 
 
 
 Reading the dataset and transforming it into a dataframe
