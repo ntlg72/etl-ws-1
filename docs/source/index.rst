@@ -65,16 +65,7 @@ Steps Involved
          # Write the data to the MySQL table
          df.to_sql(name='candidates', con=engine, if_exists='replace', index=False)
  
- 
-     ..  code-block:: python
-         
-         import pandas as pd
 
-         # Load the CSV file
-         df = pd.read_csv('candidates.csv')
-
-         # Display the first few rows
-         print(df.head())
   
 3. **Data Analysis:**
 
@@ -92,15 +83,6 @@ Steps Involved
          avg_yoe = df['yoe'].mean()
          print(f'Average Years of Experience: {avg_yoe}')
 
-     ..  code-block:: python
-         
-         import pandas as pd
-
-         # Load the CSV file
-         df = pd.read_csv('candidates.csv')
-
-         # Display the first few rows
-         print(df.head())
  
 
 4. **Data Visualization:**
@@ -117,7 +99,6 @@ Steps Involved
 
 
  .. toctree::
-   :caption: Menu
    :titlesonly:
 
    Install <installation>
