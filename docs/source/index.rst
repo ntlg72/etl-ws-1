@@ -55,7 +55,7 @@ Steps Involved
    - For example,
 
      ..  code-block:: python
-
+         
          from sqlalchemy import create_engine
 
          # Create a connection to the MySQL database
@@ -73,7 +73,7 @@ Steps Involved
    - For example,
 
      ..  code-block:: python
-
+         
          # Query the database
          query = 'SELECT * FROM candidates'
          df = pd.read_sql(query, engine)
@@ -81,7 +81,9 @@ Steps Involved
          # Perform analysis (e.g., calculate average years of experience)
          avg_yoe = df['yoe'].mean()
          print(f'Average Years of Experience: {avg_yoe}')
-     
+         
+
+ 
 
 4. **Data Visualization:**
 
