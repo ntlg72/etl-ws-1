@@ -54,11 +54,13 @@ Steps Involved
    - **Process:** Establish a connection to the MySQL database using SQLAlchemy, create a table to store the candidate data, and insert the data into the database.
    - For example,
 
-      ..  code-block:: python
+     ..  code-block:: python
+
          from sqlalchemy import create_engine
 
          # Create a connection to the MySQL database
          engine = create_engine('mysql+mysqlconnector://user:password@localhost/ws_001')
+
 
          # Write the data to the MySQL table
          df.to_sql(name='candidates', con=engine, if_exists='replace', index=False)
@@ -71,6 +73,7 @@ Steps Involved
    - For example,
 
      ..  code-block:: python
+
          # Query the database
          query = 'SELECT * FROM candidates'
          df = pd.read_sql(query, engine)
@@ -84,6 +87,7 @@ Steps Involved
 
    - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
    - The visualizations expected are:
+
             - Hires by technology (pie chart)
             - Hires by year (horizontal bar chart)
             - Hires by seniority (bar chart)
@@ -92,11 +96,7 @@ Steps Involved
 
 
 
-
-Contents
---------
-
-.. toctree::
+ .. toctree::
    :caption: Menu
    :titlesonly:
 
