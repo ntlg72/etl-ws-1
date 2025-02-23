@@ -96,13 +96,17 @@ Steps Involved
 Contents
 --------
 
-.. toctree::
-   :caption: Menu
+.. dropdown:: Menu
+   :animate: fade-in
+   :color: primary
 
-   installation
-   ingestion
-   migration
-   analysis
-   visualization
+   .. toctree::
+      :hidden:
+
+      installation
+      ingestion
+      migration
+      analysis
+      visualization
 
 
