@@ -12,7 +12,7 @@ Importing Libraries and Modules
 
 - **os and dotenv:** These libraries are used to manage environment variables securely. Loading database credentials from a .env file ensures that sensitive information is not hard-coded into the script, enhancing security and making the codebase more maintainable.
 
-- **sqlalchemy:** This library provides a powerful Object-Relational Mapping (ORM) capability, enabling efficient interaction with the MySQL database. The create_engine and text modules from SQLAlchemy simplify the process of connecting to and querying the database.
+- **sqlalchemy:** This library provides a powerful Object-Relational Mapping (ORM) capability, enabling efficient interaction with the MySQL database. The create_engine and text modules from SQLAlchemy simplify the process of connecting to and querying the database. ``types as sqltypes`` provides access to SQLAlchemy's type system, allowing you to explicitly define the data types of columns when creating tables or interacting with data. This is important for data integrity and performance.
 
 - **pandas:** This library is utilized for data manipulation and analysis. Transforming the candidates dataset into a Pandas DataFrame allows for easy manipulation and preparation before writing the data to the MySQL database.
 
@@ -126,6 +126,9 @@ To use the ``connection`` package and its modules in the project´s Jupyter note
 
     ..  code-block:: python
 
+         # Add the 'src' directory to the PYTHONPATH
+         sys.path.append(os.path.abspath('../src'))
+ 
          # Import the setup script
          from src.mypackage.setup_env import setup_environment
                
