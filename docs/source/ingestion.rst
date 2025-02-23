@@ -166,13 +166,14 @@ The code used in this step defines a function `pandas_to_mysql_type` that sugges
 
     The function handles integer, floating-point, datetime, boolean, categorical, and string types, providing a suggested MySQL type for each.  
 
+The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
 
 .. image:: https://i.postimg.cc/jjjZD6dk/Captura-de-pantalla-2025-02-23-002836.png
    :align: center
    :width: 600px 
 
 
-The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
+
 
 Profiling the lenght of numerical values
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,12 +181,11 @@ Profiling the lenght of numerical values
 The code used in this step uses the Pandas DataFrame df to display the maximum and minimum values for its numeric columns.  ``df.max(numeric_only=True)`` calculates and prints the maximum value for each column that has a numeric data type. The numeric_only=True argument ensures that only numeric columns are considered, preventing errors if the DataFrame contains non-numeric data. 
 
 
+The resulting information is useful for understanding the range of values in the numeric data, which is crucial for choosing appropriate data types for database storage.
+
 .. image:: https://i.postimg.cc/C5pGsbS0/Captura-de-pantalla-2025-02-23-003006.png
    :align: center
    :width: 600px 
-
-
-The resulting information is useful for understanding the range of values in the numeric data, which is crucial for choosing appropriate data types for database storage.
 
 
 
@@ -198,11 +198,12 @@ Then, it calculates the length of each string in these selected columns using ``
 
 - The ``.applymap()`` function applies the ``len(str(x))`` function to every element in the DataFrame, converting each element to a string (in case it's not already) and then getting its length.  Finally, it calculates and prints the maximum length for each text column using ``.max()``. 
 
+The resulting information is valuable for database design (choosing appropriate VARCHAR or TEXT sizes) 
 
 .. image:: https://i.postimg.cc/gkDV3w59/Captura-de-pantalla-2025-02-23-003019.png
    :align: center
    :width: 600px 
 
 
-The resulting information is valuable for database design (choosing appropriate VARCHAR or TEXT sizes) 
+
 
