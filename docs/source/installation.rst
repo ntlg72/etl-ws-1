@@ -16,18 +16,15 @@ Implementation
 
 1. In the project directory, the ``py -m venv <environment_name>`` command is used to create the virtual enviroment called "venv" in the IDE:
 
-2. The activation and deactivation of the enviroment is done as follows with de **CMD** terminal:``activate``
+2. The activation and deactivation of the enviroment is done as follows with de **CMD** terminal:To activate use the commmand ``activate``. The "(venv)" indicates that the enviroment is activated.To deactive use the command ``deactivate``.The absence of the "(venv)" indicates that the enviroment is deactivated.
 
-To activate use the commmand ``activate``. The "(venv)" indicates that the enviroment is activated.
-
-.. image:: https://i.postimg.cc/T1dCsPsH/Captura-de-pantalla-2025-02-22-172014.png
-
-To deactive use the command ``deactivate``.The absence of the "(venv)" indicates that the enviroment is deactivated.
+.. image:: https://i.postimg.cc/T1dCsPsH/Captura-de-pantalla-2025-02-22-172014.png 
 
 3. The project directory contains a "requirements.txt" file in that lists all the dependencies needed. To install them, the ``pip install -r requirements.txt`` is run while the enviroment is activated. With the command pip list we can check that the dependencies have been installed.
 
 .. image:: https://i.postimg.cc/15gp36Dr/Captura-de-pantalla-2025-02-22-174350.png
-
+   :align: center
+   :width: 600px
 
 Installing WSL 2 and Docker for MySQL Deployment
 ------------------------------------------------
@@ -69,11 +66,19 @@ Confirming Docker Installation
 2. Display the version and build number by entering: ``docker --version``
 
 .. image:: https://i.postimg.cc/sXkZBHYP/Captura-de-pantalla-2025-02-22-180409.png
+   :align: center
+   :width: 600px
 
 3. Test the installation by running a simple built-in Docker image: ``docker run hello-world``
 
 Now Docker commands work from Windows using the new WSL 2 engine.
 
 .. image:: https://i.postimg.cc/NFR2R8D3/Captura-de-pantalla-2025-02-22-180614.png
+   :align: center
+   :width: 600px
+
+
+
+
 
 
