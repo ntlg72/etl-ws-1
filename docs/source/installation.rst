@@ -14,15 +14,11 @@ Virtual environments are essential for modern Python development, providing isol
 Implementation
 """"""""""""""
 
-1. In the project directory, the following command is used to create the virtual enviroment called "venv" in the IDE:
+1. In the project directory, the ``py -m venv <environment_name>`` command is used to create the virtual enviroment called "venv" in the IDE:
 
-``py -m venv <environment_name>``
+2. The activation and deactivation of the enviroment is done as follows with de **CMD** terminal:``activate``
 
-2. The activation and deactivation of the enviroment is done as follows with de **CMD** terminal:
-
-``activate``
-
-The "(venv)" indicates that the enviroment is activated.
+To activate use the commmand ``activate``. The "(venv)" indicates that the enviroment is activated.
 
 .. image:: https://i.postimg.cc/T1dCsPsH/Captura-de-pantalla-2025-02-22-172014.png
 
@@ -76,7 +72,8 @@ Confirming Docker Installation
 
 3. Test the installation by running a simple built-in Docker image: ``docker run hello-world``
 
+Now Docker commands work from Windows using the new WSL 2 engine.
+
 .. image:: https://i.postimg.cc/NFR2R8D3/Captura-de-pantalla-2025-02-22-180614.png
 
-Now Docker commands work from Windows using the new WSL 2 engine.
 
