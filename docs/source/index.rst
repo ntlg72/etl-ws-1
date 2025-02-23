@@ -96,9 +96,8 @@ Steps Involved
 Contents
 --------
 
-.. dropdown:: Menu
-   :animate: fade-in
-   :color: primary
+.. admonition:: Menu
+   :class: dropdown
 
    .. toctree::
       :hidden:
@@ -108,5 +107,3 @@ Contents
       migration
       analysis
       visualization
-
-
