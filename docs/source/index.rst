@@ -96,14 +96,11 @@ Steps Involved
 Contents
 --------
 
-.. admonition:: Menu
-   :class: dropdown
+.. toctree::
+   :hidden:
 
-   .. toctree::
-      :hidden:
-
-      installation
-      ingestion
-      migration
-      analysis
-      visualization
+   installation
+   ingestion
+   migration
+   analysis
+   visualization
