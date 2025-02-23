@@ -49,9 +49,10 @@ Steps Involved
   
 
 2. **Data Migration:**
-       - **Purpose:** To move the data from the CSV file to a MySQL database.
-       - **Process:** Establish a connection to the MySQL database using SQLAlchemy, create a table to store the candidate data, and insert the data into the database.
-       - For example,
+
+   - **Purpose:** To move the data from the CSV file to a MySQL database.
+   - **Process:** Establish a connection to the MySQL database using SQLAlchemy, create a table to store the candidate data, and insert the data into the database.
+   - For example,
 
       ..  code-block:: python
          from sqlalchemy import create_engine
@@ -64,9 +65,10 @@ Steps Involved
  
 
 3. **Data Analysis:**
+
    - **Purpose:** To analyze the data stored in the MySQL database to derive meaningful insights.
    - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
-   - For example
+   - For example,
 
      ..  code-block:: python
          # Query the database
@@ -79,13 +81,15 @@ Steps Involved
      
 
 4. **Data Visualization:**
-       - **Purpose:** To create visualizations that represent the insights derived from the data analysis.
-       - The visualizations expected are:
+
+      - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
+      - The visualizations expected are:
             - Hires by technology (pie chart)
             - Hires by year (horizontal bar chart)
             - Hires by seniority (bar chart)
             - Hires by country over years (USA, Brazil, Colombia, and Ecuador only)(multiline chart)    
-        
+   
+
 
 
 
