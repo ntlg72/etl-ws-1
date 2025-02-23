@@ -82,8 +82,8 @@ Steps Involved
 
 4. **Data Visualization:**
 
-      - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
-      - The visualizations expected are:
+   - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
+   - The visualizations expected are:
             - Hires by technology (pie chart)
             - Hires by year (horizontal bar chart)
             - Hires by seniority (bar chart)
