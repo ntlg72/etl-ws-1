@@ -88,10 +88,10 @@ Steps Involved
    - **Process:** Query the MySQL database using SQLAlchemy and perform data analysis using pandas.
    - The visualizations expected are:
 
-            - Hires by technology (pie chart)
-            - Hires by year (horizontal bar chart)
-            - Hires by seniority (bar chart)
-            - Hires by country over years (USA, Brazil, Colombia, and Ecuador only)(multiline chart)    
+      - Hires by technology (pie chart)
+      - Hires by year (horizontal bar chart)
+      - Hires by seniority (bar chart)
+      - Hires by country over years (USA, Brazil, Colombia, and Ecuador only)(multiline chart)    
    
 
 
