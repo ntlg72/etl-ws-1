@@ -66,7 +66,7 @@ To organize Python code effectively, directories can be designated as packages. 
        ├── requirements.txt
        └── venv/
 
-db_utils.py module
+``db_utils.py`` module
 ******************
 
 The db_utils.py module contains utility functions for database operations. These functions include connecting to the database and reading data from the database.
@@ -100,7 +100,7 @@ To establish a connection to the MySQL database, environment variables are loade
 
 
 
-setup_env.py module
+``setup_env.py`` module
 *******************
 
 The setup_env.py module handles the environment setup, including adding the ``src`` directory to the PYTHONPATH. This ensures that the package modules can be imported easily.
