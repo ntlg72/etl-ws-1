@@ -37,3 +37,6 @@ html_theme =  'sphinx_book_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+# -- Pygments style (Add this line here)
+pygments_style = 'sphinx'  # This is the correct place
