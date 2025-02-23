@@ -74,30 +74,29 @@ The db_utils.py module contains utility functions for database operations. These
 To establish a connection to the MySQL database, environment variables are loaded from the .env file, which securely stores database credentials. The sqlalchemy library's ``create_engine`` function is used to create a database engine instance, which facilitates the connection to the MySQL database. This approach ensures that the database credentials are not hard-coded into the script, enhancing security. 
 
 
-..  code-block:: python
-    :caption: src/connection/db_utils.py
+    ..  code-block:: python
 
-    import os
-    from dotenv import load_dotenv
-    from sqlalchemy import create_engine
-
-   def get_db_connection():
-        load_dotenv()
-        user = os.getenv('MYSQL_USER')
-        password = os.getenv('MYSQL_PASSWORD')
-        host = os.getenv('MYSQL_HOST')
-        port = os.getenv('MYSQL_PORT')
-        dbname = os.getenv('MYSQL_DB')
-        db_url = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}"
-
-    try:
-        engine = create_engine(db_url)
-        connection = engine.connect()
-        print("Connected to the database successfully")
-        return connection
-    except Exception as e:
-        print(f"Error: {e}")
-        return None
+          import os
+          from dotenv import load_dotenv
+          from sqlalchemy import create_engine
+      
+         def get_db_connection():
+              load_dotenv()
+              user = os.getenv('MYSQL_USER')
+              password = os.getenv('MYSQL_PASSWORD')
+              host = os.getenv('MYSQL_HOST')
+              port = os.getenv('MYSQL_PORT')
+              dbname = os.getenv('MYSQL_DB')
+              db_url = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}"
+      
+          try:
+              engine = create_engine(db_url)
+              connection = engine.connect()
+              print("Connected to the database successfully")
+              return connection
+          except Exception as e:
+              print(f"Error: {e}")
+              return None
 
 
 
@@ -106,19 +105,18 @@ setup_env.py module
 
 The setup_env.py module handles the environment setup, including adding the ``src`` directory to the PYTHONPATH. This ensures that the package modules can be imported easily.
 
-..  code-block:: python
-    :caption: src/connection/setup_env.py
-
-   import sys
-   import os
-
-   def setup_pythonpath():
-       # Add the 'src' directory to the PYTHONPATH
-       sys.path.append(os.path.abspath('../src'))
-
-   def setup_environment():
-       setup_pythonpath()
-       print("Environment setup complete.")
+    ..  code-block:: python
+      
+         import sys
+         import os
+      
+         def setup_pythonpath():
+             # Add the 'src' directory to the PYTHONPATH
+             sys.path.append(os.path.abspath('../src'))
+      
+         def setup_environment():
+             setup_pythonpath()
+             print("Environment setup complete.")
 
 
 Usage in Notebooks
@@ -126,19 +124,18 @@ Usage in Notebooks
 
 To use the ``connection`` package and its modules in the project´s Jupyter notebooks, the following code is used:
 
-..  code-block:: python
-    :caption: Running the configuration script at the beginning of the Jupyter notebooks
+    ..  code-block:: python
 
-   # Import the setup script
-   from src.mypackage.setup_env import setup_environment
-
-   # Run the setup script
-   setup_environment()
-
-
-.. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
-   :align: center
-   :width: 600px 
+         # Import the setup script
+         from src.mypackage.setup_env import setup_environment
+               
+         # Run the setup script
+         setup_environment()
+      
+      
+      .. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
+         :align: center
+         :width: 600px 
 
 
 Reading the dataset and transforming it into a dataframe
