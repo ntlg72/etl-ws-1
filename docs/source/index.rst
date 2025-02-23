@@ -98,12 +98,12 @@ Contents
 
 .. toctree::
    :caption: Menu
-   :hidden:
+   :titlesonly:
 
-   `Installation <installation>`_
-   `Ingestion <ingestion>`_
-   `Migration <migration>`_
-   `Analysis <analysis>`_
-   `Visualization <visualization>`_
+   Install <installation>
+   1. Data ingestion <ingestion>
+   2. Data migration <migration>
+   3. Data analysis <analysis>
+   4. Data visualization <visualization>
 
 
