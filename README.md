@@ -17,6 +17,7 @@ Technologies utilized in this project include:
 
 ## Table of Contents
 
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 	- [Python Virtual Environment & Dependencies](#python-virtual-environment--dependencies)
 		 - [Implementation](#implementation)
@@ -25,6 +26,7 @@ Technologies utilized in this project include:
 		 - [Installing Ubuntu](#installing-ubuntu)
   - [Turning on Docker Desktop WSL 2](#turning-on-docker-desktop-wsl-2)
 	- [Confirming Docker Installation](#confirming-docker-installation)
+- [Setting Up MySQL Database with Docker](#setting-up-mysql-database-with-docker)
 - [Usage](#usage)
 - [License](#license)
 
@@ -127,8 +129,125 @@ Important: Uninstall any previous versions of Docker Engine and CLI installed th
     ```bash
     docker run hello-world
     ```
+## Setting Up MySQL Database with Docker
+
+1. **Pull MySQL Image:**
+   - Open your Ubuntu 24.04 terminal and run the following command to pull the MySQL image:
+     ```bash
+     docker pull mysql
+     ```
+
+2. **Run MySQL Container:**
+   - Run the MySQL container and create a new database named `ws_001`:
+     ```bash
+     docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -p 3307:3306 mysql
+     ```
+
+##### **Explanation:**
+
+-   `docker run -d` → Runs the container in detached mode (background).
+-   `--name mysql-container` → Names the container `mysql-container`.
+-   `-e MYSQL_ROOT_PASSWORD=your_password` → Sets the MySQL root password.
+-   `-e MYSQL_DATABASE=ws_001` → Creates a default database named `ws_001`.
+-   `-p 3307:3306` → Maps port `3307` on the host to `3306` inside the container.
+	-   **`3307` (Host Port):** This is the port on your _host machine_ (your WSL2 Ubuntu instance in this case) that you will use to access the MySQL server running inside the Docker container.
+	-   **`3306` (Container Port):** This is the port that the MySQL server is _listening on inside the Docker container_. MySQL's default port is 3306, and it's very likely that your MySQL Docker image is configured to use this default.
+-   `mysql` → Uses the latest MySQL image from Docker Hub.
+
+Note that `mysql` is the name you want to assign to your container, and `your_password` is the password to be set for the MySQL root user.
+
+3. **Check if the container is running:**
+
+	```bash
+     docker ps 
+     ```
+
+5. **Access MySQL Container:**
+   - Access the MySQL container's shell:
+     ```bash
+     docker exec -it mysql-container mysql -u root -p 
+     ```
+Then, enter your password (`your_password`) to access the MySQL shell.
+
 ## Usage 
 
+### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
+
+A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password  set up.
+
+**1. Locate the project directory:**
+
+Navigate to the directory where this repository has been cloned This is where you'll create the `.env` file. In the terminal it can be be done trhought the following commands:
+```
+    cd /path/to/cloned/repository/directory
+```
+**2. Create the .env file:**
+
+In the project directory, create a new file named `.env` (no file extension). You can do this from the command line:
+
+```
+touch .env
+```
+
+Or using a text editor.
+
+**3. Add your MySQL credentials to the .env file:**
+
+Open the `.env` file with a text editor and add the following lines, replacing the placeholders with your actual values:
+
+```
+MYSQL_USER=root
+MYSQL_PASSWORD=your_mysql_password
+MYSQL_HOST=your_wsl2_ip_address
+MYSQL_DATABASE=ws_001
+MYSQL_PORT=3307
+
+```
+-   **`MYSQL_USER`:** Your MySQL username.
+-   **`MYSQL_PASSWORD`:** The password you set for your MySQL user.
+-   **`MYSQL_HOST`:** This is _crucial_. You need the IP address of your WSL2 instance. See step 4 below to find this.
+-   **`MYSQL_DATABASE`:** The MySQL database created with the doccker command-
+-   **`MYSQL_PORT`:** The port MySQL is listening on. The one 3307.
+
+**4. Find your WSL2 IP Address:**
+
+There are several ways to find the IP address of your WSL2 instance:
+
+-   **From WSL:** Open your WSL2 terminal and run:
+    
+    Bash
+    
+    ```
+    ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1
+
+    ```
+    
+-   **From Windows (PowerShell):** Open PowerShell as administrator and run:
+    
+    PowerShell
+    
+    ```
+    wsl hostname -I
+    ```
+    
+-   **From Windows (Command Prompt):** Open command prompt and run:
+    
+    ```
+    wsl hostname -I
+    ```
+    
+
+The output will be the IP address of your WSL2 instance. Use this IP address for `MYSQL_HOST` in your `.env` file.
+
+**5. Secure the .env file:**
+
+The `.env` file contains sensitive information. It's _extremely important_ to prevent it from being accidentally committed to version control (like Git). Add `.env` to your `.gitignore` file:
+
+```
+.env
+```
+
+This will tell Git to ignore the `.env` file.
 
 ## License
 
