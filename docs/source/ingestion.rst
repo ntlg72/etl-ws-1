@@ -151,21 +151,22 @@ Then, the ``pd.read_csv`` function reads the CSV file into a DataFrame, with fie
    :align: center
    :width: 600px 
 
+
 Data profiling
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""
 
 Data profiling is an invaluable step in the data preparation process.  While it doesn't fully automate data type mapping, it provides crucial insights needed to make informed decisions and create a well-designed database schema. 
 
 Profiling data types
 ^^^^^^^^^^^^^^^^^^^^
 
-The code used in this step defines a function `pandas_to_mysql_type` that suggests appropriate MySQL data types based on the data types of Pandas Series (columns).  It iterates through the columns of a Pandas DataFrame (df), determines the Pandas dtype, and uses a series of conditional checks to map these to corresponding SQLAlchemy types (which can be used to define MySQL columns).  
+The code used in this step defines a function ``pandas_to_mysql_type`` that suggests appropriate MySQL data types based on the data types of Pandas Series (columns).  It iterates through the columns of a Pandas DataFrame (df), determines the Pandas dtype, and uses a series of conditional checks to map these to corresponding SQLAlchemy types (which can be used to define MySQL columns).  
 
     The function handles integer, floating-point, datetime, boolean, categorical, and string types, providing a suggested MySQL type for each.  
 
 The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
 
-.. image:: https://i.postimg.cc/jjjZD6dk/Captura-de-pantalla-2025-02-23-002836.png
+.. image:: https://i.postimg.cc/JzSp1ZcW/Captura-de-pantalla-2025-02-23-111304.png
    :align: center
    :width: 600px 
 
@@ -191,9 +192,7 @@ Profiling the lenght of string values
 
 The code used in this step analyzes the text (object type) columns in a Pandas DataFrame df to determine the maximum and minimum string lengths within each column.  It first selects only the columns with a data type of 'object' (typically representing text) using ``df.select_dtypes(include=['object'])``. 
 
-Then, it calculates the length of each string in these selected columns using ``.applymap(lambda x: len(str(x)))``.  
-
-- The ``.applymap()`` function applies the ``len(str(x))`` function to every element in the DataFrame, converting each element to a string (in case it's not already) and then getting its length.  Finally, it calculates and prints the maximum length for each text column using ``.max()``. 
+Then, it calculates the length of each string in these selected columns using ``.apply(lambda col: col.map(lambda x: len(str(x))))``.  This line applies a function to each column, which itself maps another function ``(len(str(x)))`` to every element within that column.  The inner function converts each element to a string and then calculates its length. This results in a new DataFrame, ``lengths``, containing the string lengths.  Next, ``lengths.max()`` calculates the maximum string length for each column, storing the results in a Pandas Series called max_lengths. Finally, the code prints a descriptive label and the max_lengths Series, displaying the maximum string length found in each text column. 
 
 The resulting information is valuable for database design (choosing appropriate VARCHAR or TEXT sizes) 
 
