@@ -92,24 +92,16 @@ Steps Involved
 Contents
 --------
 
-..toctree::
-  :hidden:
+.. toggle:: Menu
+   :animate: fade-in
+   :color: primary
 
-  installation
-  ingestion
-  migration
-  analysis
-  visualization
+   .. toctree::
+      :hidden:
 
-..dropdown:: Menu
-  :animate: fade-in  # Makes the text fade into picture
-  :color: primary  # Makes the dropdown green instead of grey
+      installation
+      ingestion
+      migration
+      analysis
+      visualization
 
-  ..toctree::
-    :hidden:
-
-     installation
-     ingestion
-     migration
-     analysis
-     visualization
