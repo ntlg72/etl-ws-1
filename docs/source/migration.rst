@@ -106,7 +106,7 @@ Implementation
    :align: center
    :width: 600px 
 
-.. image:: ../images/candidates-desc
+.. image:: ../images/candidates-desc.png
    :align: center
    :width: 600px 
 
