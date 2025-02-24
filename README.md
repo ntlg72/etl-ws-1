@@ -12,7 +12,7 @@ Technologies utilized in this project include:
     
 -   **Jupyter Notebook**: For interactive data analysis and visualization.
     
--   **MySQL**: For database management.
+-   [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff)](#): For database management.
 
 
 ## Table of Contents
@@ -28,15 +28,15 @@ Technologies utilized in this project include:
 	- [Confirming Docker Installation](#confirming-docker-installation)
 - [Setting Up MySQL Database with Docker](#setting-up-mysql-database-with-docker)
 - [Usage](#usage)
-- [License](#license)
+- [Documentation](#documentation)
 
 
 ## Prerequisites  
 
 Before you begin, ensure you have met the following requirements:
-- **Operating System:** Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
--  **Python:** 3.13 
--  **Dependencies:** WSL 2.
+- [![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#) Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
+-    [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#): 3.12.9
+- [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#) or your prefered Python IDE.
 
 ## Installation
 
@@ -249,8 +249,8 @@ The `.env` file contains sensitive information. It's _extremely important_ to pr
 
 This will tell Git to ignore the `.env` file.
 
-## License
+## Documentation 
+Documentation for this project was made using [![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#).
 
-This project is licensed under the [MIT License](LICENSE).
 
 > Written with [StackEdit](https://stackedit.io/).
