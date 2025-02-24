@@ -8,11 +8,11 @@ This project involves efficient data management and advanced visualization techn
 
 Technologies utilized in this project include:
 
--   **Python**: For data handling and analysis.
+-  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54): For data handling and analysis.
     
--   **Jupyter Notebook**: For interactive data analysis and visualization.
-    
--   [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff)](#): For database management.
+-    
+   ![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white): For interactive data analysis and visualization.
+-   ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white): For database management.
 
 
 ## Table of Contents
