@@ -6,11 +6,12 @@ Data Migration
    :local:
 
 
-In order to create a table with adequate and efficient data types for the storage of our database, we must make an inference of the data type from the Dtypes of the Pandas dataframe that is given to us. This is done by the infer_sqlalchemy_type() function, which goes through all the columns of the dataframe and determines the conditions that are met for the assignment of certain types of data.
+In general, data migration means moving digital information. Transferring that information to a different location, file format, environment, storage system, database, datacenter, or application all fit within the definition of data migration. In this case, we migrate de *candidates.csv* Pandas DataFrame into a MySQL table.
 
 
 MySQL Table Design 
 ------------------
+
 
 1. Naming Conventions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -21,6 +22,13 @@ Database table names, column names, index names, etc. should follow a naming con
 
    Table names and column names should be in lowercase letters or numbers. 
 
+To standarized columns, the ``clean_column_names(df)`` is used in the *001_e.ipynb* notebook. This function cleans and standardizes column names in a Pandas DataFrame to conform to database naming conventions.It performs the following transformations:
+
+    - Replaces spaces in column names with underscores.
+    - Converts column names to lowercase.
+
+It takes as input the DataFrame whose column names will be cleaned, and returns the modified DataFrame with cleaned column names.
+                         
 
 2. Choosing Appropriate Field Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,16 +46,27 @@ When designing tables, it is important to choose appropriate and efficient field
 
 The information obtained during the data profiling process (see :ref:`Profiling data types`) contributes to choosing appropriate data types for the MySQL table design by showing the correspondence between the Pandas data types and suggested MySQL data types. 
 
+.. code-block:: shell
+
 
     Column 'First Name': Pandas dtype = object, Suggested MySQL type = VARCHAR(11)
+
     Column 'Last Name': Pandas dtype = object, Suggested MySQL type = VARCHAR(13)
+
     Column 'Email': Pandas dtype = object, Suggested MySQL type = VARCHAR(36)
+
     Column 'Application Date': Pandas dtype = object, Suggested MySQL type = VARCHAR(10)
+
     Column 'Country': Pandas dtype = object, Suggested MySQL type = VARCHAR(51)
+
     Column 'YOE': Pandas dtype = int64, Suggested MySQL type = <class 'sqlalchemy.sql.sqltypes.SmallInteger'>
+
     Column 'Seniority': Pandas dtype = object, Suggested MySQL type = VARCHAR(9)
+
     Column 'Technology': Pandas dtype = object, Suggested MySQL type = VARCHAR(39)
+
     Column 'Code Challenge Score': Pandas dtype = int64, Suggested MySQL type = <class 'sqlalchemy.sql.sqltypes.SmallInteger'>
+
     Column 'Technical Interview Score': Pandas dtype = int64, Suggested MySQL type = <class 'sqlalchemy.sql.sqltypes.SmallInteger'>.
     
 
@@ -102,20 +121,46 @@ Using a class to define the table structure leverages Object-Relational Mapping 
 Implementation
 """"""""""""""
 
+The process begins with defining a function, ``get_engine()``, which establishes a connection to a MySQL database using SQLAlchemy. This function retrieves database credentials (username, password, host, port, and database name) from environment variables and constructs a connection string.  It then uses this string to create a SQLAlchemy engine, which manages the communication with the database.  
+
+Once the table structure is defined in the Applicants class, the create_tables() function is responsible for actually creating the table in the MySQL database.  This function uses the engine created by ``get_engine()`○ and the metadata associated with the Base class to issue the necessary SQL commands to create the table.  The if __name__ == "__main__": block ensures that the create_tables() function is called only when the script is executed directly (not when it's imported as a module).  This block effectively starts the process of establishing the database connection, defining the table schema, and creating the table in the MySQL database if it doesn't already exist. The process effectively leverages SQLAlchemy's ORM capabilities to map Python classes to database tables and automate the creation process.
+
+
+3. class Applicants(Base)
+**************************
+
+Next, a base class (``Base``) is created using ``declarative_base()``. This base class serves as a container for table metadata and is used to define table structures in a declarative way.  The ``Applicants`` class inherits from this base and defines the structure of the "candidates" table.  Within this class, each attribute represents a column in the table, specifying the column name, data type (e.g., String, Integer, SmallInteger), and constraints (e.g., nullable=False).
+
+
 .. image:: ../images/table-create.png
    :align: center
    :width: 600px 
 
-.. image:: ../images/candidates-desc.png
-   :align: center
-   :width: 600px 
+.. tip::
+
+   To verify the table attibutes, after switching to the *ws_001* databases, the command is ``DESC candidates`` used.
+
+   .. image:: ../images/candidates-desc.png
+     :align: center
+     :width: 600px 
+
+
+3. Choosing Appropriate Field Length
+************************************
+
+Once the table structure is defined in the ``Applicants`` class, the ``create_tables()`` function is responsible for actually creating the table in the MySQL database.  This function uses the engine created by ``get_engine()`` and the metadata associated with the ``Base`` class to issue the necessary SQL commands to create the table.  The ``if __name__ == "__main__":`` block ensures that the create_tables() function is called only when the script is executed directly (not when it's imported as a module).  This block effectively starts the process of establishing the database connection, defining the table schema, and creating the table in the MySQL database if it doesn't already exist. The process effectively leverages SQLAlchemy's ORM capabilities to map Python classes to database tables and automate the creation process.
+
 
 .. image:: ../images/data-insert.png
    :align: center
    :width: 600px
 
+
+.. tip::
+
+   To verify the table registers, after switching to the *ws_001* databases, the command is ``SELECT COUNT(id) FROM candidates`` used. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
+
+
 .. image:: ../images/rows.png
    :align: center
    :width: 600px
-
-
