@@ -3,8 +3,8 @@ Installation
 
 This section explains why certain Python libraries and technologies are used in this project, and provides step-by-step instructions for setting up the project. Python must be installed previusly as well as an integrated development environment (IDE).
 
-..contents::
-  :local:
+.. contents::
+   :local:
 
 Prerequisites
 -------------
