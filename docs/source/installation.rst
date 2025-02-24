@@ -3,8 +3,8 @@ Installation
 
 This section explains why certain Python libraries and technologies are used in this project, and provides step-by-step instructions for setting up the project. Python must be installed previusly as well as an integrated development environment (IDE).
 
-.. contents::
-   :local:
+..contents::
+  :local:
 
 Prerequisites
 -------------
@@ -32,11 +32,6 @@ Follow these steps to install **etl-ws-1**:
 
        cd etl-ws-1
 
-3. Install the required dependencies:
-
-   .. code-block:: bash
-
-       pip install -r requirements.txt
 
 Python Virtual Environment & Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,6 +58,10 @@ Implementation
       "Windows", "cmd.exe", "C:\\> <venv>\\Scripts\\activate.bat"
       "Windows", "PowerShell", "PS C:\\> <venv>\\Scripts\\Activate.ps1"
 
+.. image:: ../images/venv.png
+   :align: center
+   :width: 600px 
+
 3. The project directory contains a `requirements.txt` file listing all necessary dependencies. To install them, while the virtual environment is activated, run:
 
    .. code-block:: bash
@@ -74,6 +73,10 @@ Implementation
    .. code-block:: bash
 
        pip list
+
+.. image:: ../images/libs.png
+   :align: center
+   :width: 600px 
 
 Installing WSL 2 and Docker for MySQL Deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,11 +140,20 @@ Confirming Docker Installation
 
        docker --version
 
+
+.. image:: ../images/docker-v.png
+   :align: center
+   :width: 600px 
+
 3. Test the installation by running a simple built-in Docker image:
 
    .. code-block:: bash
 
        docker run hello-world
+
+.. image:: ../images/docker-hello-world.png
+   :align: center
+   :width: 600px 
 
 Setting Up MySQL Database with Docker
 -------------------------------------
@@ -182,6 +194,10 @@ Setting Up MySQL Database with Docker
 
        docker ps
 
+.. image:: ../images/docker-ps.png
+   :align: center
+   :width: 600px 
+
 5. **Access MySQL Container:**
 
    Access the MySQL container's shell:
@@ -196,7 +212,7 @@ Usage
 -----
 
 Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password set up.
 
@@ -259,6 +275,10 @@ A `.env` file is needed to store your MySQL credentials securely, including the 
          wsl hostname -I
 
    The output will be the IP address of your WSL2 instance. Use this IP address for `MYSQL_HOST` in your `.env` file.
+
+.. image:: ../images/ip.png
+   :align: center
+   :width: 600px 
 
 5. **Secure the .env file:**
 
