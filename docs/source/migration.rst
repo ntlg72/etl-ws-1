@@ -72,7 +72,7 @@ The information obtained during the data profiling process (see :ref:`Profiling 
 
 .. attention::
 
-  "Application Date" should ideally be changeg to MySQL's DATE, DATETIME, or TIMESTAMP type. And shorter VARCHAR lengths    
+  "Application Date" should ideally be changed to MySQL's DATE, DATETIME, or TIMESTAMP type. And shorter VARCHAR lengths    
   and smaller integer types are to be considered if one is sure the range is sufficient.
 
 
@@ -161,6 +161,6 @@ Once the table structure is defined in the ``Applicants`` class, the ``create_ta
    To verify the table registers, after switching to the *ws_001* databases, the command is ``SELECT COUNT(id) FROM candidates`` used. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
 
 
-.. image:: ../images/rows.png
-   :align: center
-   :width: 600px
+   .. image:: ../images/rows.png
+      :align: center
+      :width: 600px
