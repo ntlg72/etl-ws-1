@@ -169,7 +169,7 @@ The code used in this step defines a function ``pandas_to_mysql_type`` that sugg
 
 The results are suggestions and should be reviewed and adjusted based on the specific data and application requirements.
 
-.. image:: https://i.postimg.cc/JzSp1ZcW/Captura-de-pantalla-2025-02-23-111304.png
+.. image:: ../images/profile-dtypes.png
    :align: center
    :width: 600px 
 
