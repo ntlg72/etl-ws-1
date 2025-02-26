@@ -273,7 +273,7 @@ After updating your mail configuration, restart your Redash services to apply th
 
 ## Usage 
 
-### Running a MySQL Instance with Docker Compose
+## Running a MySQL Instance with Docker Compose
 
 We will use a single container for our MySQL instance with Docker Compose. In your command line or terminal of your WSL2 machine, navigate to this project's directory, and into the `mysql` directory.
 
@@ -281,7 +281,7 @@ We will use a single container for our MySQL instance with Docker Compose. In yo
 cd etl-ws-1/redash/mysql
 ```
 
-### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
+## Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
 
 A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password  set up.
 
