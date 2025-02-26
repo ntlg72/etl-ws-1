@@ -26,8 +26,21 @@ Technologies utilized in this project include:
 		 - [Installing Ubuntu](#installing-ubuntu)
   - [Turning on Docker Desktop WSL 2](#turning-on-docker-desktop-wsl-2)
 	- [Confirming Docker Installation](#confirming-docker-installation)
-- [Setting Up MySQL Database with Docker](#setting-up-mysql-database-with-docker)
+  - [Redash setup](#redash-setup)
+    - [Cloning the Repository](#cloning-the-repository)
+    - [Docker Compose Configuration](#docker-compose-configuration)
+    - [Installation](#installation-1)
+    - [Mail Configuration](#mail-configuration)
 - [Usage](#usage)
+     - [Running a MySQL Instance with Docker Compose](#running-a-mysql-instance-with-docker-compose)
+     -  [Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04](#setting-up-a-env-file-for-mysql-credentials-in-wsl2-ubuntu-2404)
+     - [Using Redash](#using-redash)
+       - [Login to Redash](#login-to-redash)
+       -  [Connect to a Data Source](#connect-to-a-data-source)
+       -  [How to create a dashboard](#how-to-create-a-dashboard)
+       -  [Create query](#create-query)
+       - [Create visualizations for the query](#create-visualizations-for-the-query)
+
 - [Documentation](#documentation)
 
 
@@ -401,5 +414,4 @@ Choose the visualization, optionally set the widget’s size (Regular or Double)
 ## Documentation 
 Documentation for this project was made using [![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#).
 
-
-> Written with [StackEdit](https://stackedit.io/).
+A PDF version can be found in this project´s "docs/pdf" directory.  It can also be viewed through this link: https://etl-ws-1.readthedocs.io/en/latest/; or checked in  in this project´s "docs/source", where several *reStructuredText* (.rst) files are placed.
