@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'ws_001'
+      MYSQL_USER: 'your_MySQL_username'
+      MYSQL_PASSWORD: 'your_MySQL_password'
+      MYSQL_ROOT_PASSWORD: 'your_MySQL_root_password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./my-db:/var/lib/mysql
+# Names our volume
+volumes:
+  my-db:
