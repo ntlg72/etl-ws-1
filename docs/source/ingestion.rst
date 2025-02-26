@@ -100,25 +100,6 @@ To establish a connection to the MySQL database, environment variables are loade
 
 
 
-``setup_env.py`` module
-*******************
-
-The setup_env.py module handles the environment setup, including adding the ``src`` directory to the PYTHONPATH. This ensures that the package modules can be imported easily.
-
-    ..  code-block:: python
-      
-         import sys
-         import os
-      
-         def setup_pythonpath():
-             # Add the 'src' directory to the PYTHONPATH
-             sys.path.append(os.path.abspath('../src'))
-      
-         def setup_environment():
-             setup_pythonpath()
-             print("Environment setup complete.")
-
-
 Usage in Notebooks
 ^^^^^^^^^^^^^^^^^^
 
@@ -129,11 +110,9 @@ To use the ``connection`` package and its modules in the project´s Jupyter note
          # Add the 'src' directory to the PYTHONPATH
          sys.path.append(os.path.abspath('../src'))
  
-         # Import the setup script
-         from src.mypackage.setup_env import setup_environment
-               
-         # Run the setup script
-         setup_environment()
+         from connection_db.db_utils import get_connection
+
+         conn = get_connection()
       
       
 .. image:: https://i.postimg.cc/Zq0CB0kL/Captura-de-pantalla-2025-02-22-235016.png
