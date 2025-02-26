@@ -1,27 +1,37 @@
-import pandas as pd
-from sqlalchemy import create_engine
+Para mostrar solo el número de batch cuando ocurra un error, puedes ajustar el bloque `except` en tu función. Aquí tienes una versión mejorada del código:
 
-def insert_data(df, table_name, directory, db_url):
+```python
+def insert_data(df, table_name, batch_size=1000):
     """
-    Inserta datos de un DataFrame en una base de datos SQL.
+    Inserts data from DataFrame to DB in MySQL in batches.
 
-    :param df: DataFrame con los datos a insertar.
-    :param table_name: Nombre de la tabla donde se insertarán los datos.
-    :param directory: Directorio donde se encuentra la base de datos (si es SQLite).
-    :param db_url: URL de conexión a la base de datos.
+    :param df: DataFrame with data to insert.
+    :param table_name: Name of the table where data is supposed to be inserted.
+    :param batch_size: Number of rows to insert per batch.
     """
+    engine = get_engine()
+    connection = engine.connect()
+    transaction = connection.begin()
+    print("Successful connection.")
+
     try:
-        # Crear la conexión con la base de datos
-        engine = create_engine(db_url)
-        print("Conexión exitosa")
+        for i in range(0, len(df), batch_size):
+            batch_df = df.iloc[i:i + batch_size]
+            batch_df.to_sql(name=table_name, con=connection, if_exists='append', index=False)
+            print(f"Inserted batch {i // batch_size + 1} successfully.")
 
-        # Insertar los datos
-        df.to_sql(name=table_name, con=engine, if_exists='append', index=False)
-        print(f"Datos insertados en la tabla '{table_name}' correctamente.")
-
+        transaction.commit()
+        print(f"All data inserted into '{table_name}' successfully.")
+    
     except Exception as e:
-        print(f"❌ Error al insertar datos: {e}")
+        batch_number = i // batch_size + 1
+        transaction.rollback()
+        print(f"Error in batch {batch_number}: {e}")
+    
+    finally:
+        connection.close()
 
-# Ejemplo de uso
-df = pd.read_csv("datos.csv")  # Cargar un DataFrame de ejemplo
-insert_data(df, "accidents", "ruta/al/directorio", "sqlite:///ruta/al/directorio/database.db")
+insert_data(df, "candidates")
+```
+
+En esta versión, he agregado una variable `batch_number` dentro del bloque `except` para capturar y mostrar el número del batch que causó el error. Ahora, si ocurre un error, se imprimirá un mensaje que indica en qué batch ocurrió el problema.
