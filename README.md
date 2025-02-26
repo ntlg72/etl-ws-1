@@ -267,8 +267,21 @@ We will use a single container for our MySQL instance with Docker Compose. In yo
 ```bash
 cd etl-ws-1/redash/mysql
 ```
+Now you are going to update the existent `docker-compose.yml`. You must change the default MySQL credentials to suit your needs. Locate the database service section in your Docker Compose file and update the following environment variables with your own credentials:
 
-#### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
+- **MYSQL_USER:** The username to connect to your database.
+
+- **MYSQL_PASSWORD:** The password for the specified user.
+
+- **MYSQL_ROOT_PASSWORD:** The password for the root user.
+
+Now you can start the container. Run `docker-compose up` (this might take a while on the first run because Docker needs to pull the containers). You should now have a MySQL instance running.
+
+To access the MySQL container’s shell:
+
+`docker exec -it mysql-db-1 mysql -u <user> -p <user_password> `
+
+### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
 
 A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password  set up.
 
