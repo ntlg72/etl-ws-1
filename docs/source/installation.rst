@@ -120,17 +120,6 @@ Installing Ubuntu
 2. Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
 
 
-
-5. **Access MySQL Container:**
-
-   Access the MySQL container's shell:
-
-   .. code-block:: bash
-
-       docker exec -it mysql-db-1 mysql -u <user> -p <user_password>
-
-   Then, enter your password (`your_password`) to access the MySQL shell.
-
 Redash setup
 ^^^^^^^^^^^^^
 Redash is an open-source data collaboration platform that enables you to connect to any data source, visualize data and share it.
@@ -293,6 +282,16 @@ Now you can start the container.  Runn ``docker-compose up`` (this might take a 
 .. hint::
 
    If the "3306" port in your host machine is already in use, you aldo need to change the port configurations in the ``docker-compose.yml``.
+
+
+To access the MySQL container's shell:
+
+   .. code-block:: bash
+
+       docker exec -it mysql-db-1 mysql -u <user> -p <user_password>
+
+Then, enter your password (`your_password`) to access the MySQL shell.
+
 
 Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
