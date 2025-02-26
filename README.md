@@ -8,11 +8,11 @@ This project involves efficient data management and advanced visualization techn
 
 Technologies utilized in this project include:
 
--   **Python**: For data handling and analysis.
+-  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54): For data handling and analysis.
     
--   **Jupyter Notebook**: For interactive data analysis and visualization.
-    
--   **MySQL**: For database management.
+-    
+   ![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white): For interactive data analysis and visualization.
+-   ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white): For database management.
 
 
 ## Table of Contents
@@ -28,15 +28,15 @@ Technologies utilized in this project include:
 	- [Confirming Docker Installation](#confirming-docker-installation)
 - [Setting Up MySQL Database with Docker](#setting-up-mysql-database-with-docker)
 - [Usage](#usage)
-- [License](#license)
+- [Documentation](#documentation)
 
 
 ## Prerequisites  
 
 Before you begin, ensure you have met the following requirements:
-- **Operating System:** Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
--  **Python:** 3.13 
--  **Dependencies:** WSL 2.
+- [![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#) Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
+-    [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#): 3.12.9
+- [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#) or your prefered Python IDE.
 
 ## Installation
 
@@ -129,49 +129,146 @@ Important: Uninstall any previous versions of Docker Engine and CLI installed th
     ```bash
     docker run hello-world
     ```
-## Setting Up MySQL Database with Docker
 
-1. **Pull MySQL Image:**
-   - Open your Ubuntu 24.04 terminal and run the following command to pull the MySQL image:
-     ```bash
-     docker pull mysql
-     ```
+## Redash setup
 
-2. **Run MySQL Container:**
-   - Run the MySQL container and create a new database named `ws_001`:
-     ```bash
-     docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=your_password -e MYSQL_DATABASE=ws_001 -p 3307:3306 mysql
-     ```
+Redash is an open-source data collaboration platform that enables you to connect to any data source, visualize data and share it.
 
-##### **Explanation:**
+### Cloning the Repository
 
--   `docker run -d` → Runs the container in detached mode (background).
--   `--name mysql-container` → Names the container `mysql-container`.
--   `-e MYSQL_ROOT_PASSWORD=your_password` → Sets the MySQL root password.
--   `-e MYSQL_DATABASE=ws_001` → Creates a default database named `ws_001`.
--   `-p 3307:3306` → Maps port `3307` on the host to `3306` inside the container.
-	-   **`3307` (Host Port):** This is the port on your _host machine_ (your WSL2 Ubuntu instance in this case) that you will use to access the MySQL server running inside the Docker container.
-	-   **`3306` (Container Port):** This is the port that the MySQL server is _listening on inside the Docker container_. MySQL's default port is 3306, and it's very likely that your MySQL Docker image is configured to use this default.
--   `mysql` → Uses the latest MySQL image from Docker Hub.
+We are going to self-host Redash using the official setup script. For this, you need to clone the Redash repository in your *WSL 2 Ubuntu 24.04* machine.
 
-Note that `mysql` is the name you want to assign to your container, and `your_password` is the password to be set for the MySQL root user.
+```bash
+	git clone https://github.com/getredash/setup.git etl-ws-  	1/redash
+	cd etl-ws-1/redash
+ ```
 
-3. **Check if the container is running:**
+This will clone the repository into a directory named `redash` (already existent inside this project’s directory) and change into that directory.
 
-	```bash
-     docker ps 
-     ```
+### Docker Compose Configuration
 
-5. **Access MySQL Container:**
-   - Access the MySQL container's shell:
-     ```bash
-     docker exec -it mysql-container mysql -u root -p 
-     ```
-Then, enter your password (`your_password`) to access the MySQL shell.
+In addition, you need to add a Docker Compose file in your Redash directory to define the services required for running Redash. Navigate to the project repository cloned in your machine, and make sure a `docker-compose.yml` file is present with the following content:
+
+```yaml
+x-redash-service: &redash-service
+  image: redash/redash:__TAG__
+  depends_on:
+    - postgres
+    - redis
+  env_file: /opt/redash/env
+  restart: always
+services:
+  server:
+    <<: *redash-service
+    command: server
+    ports:
+      - "5000:5000"
+    environment:
+      REDASH_WEB_WORKERS: 4
+  scheduler:
+    <<: *redash-service
+    command: scheduler
+    depends_on:
+      - server
+  scheduled_worker:
+    <<: *redash-service
+    command: worker
+    depends_on:
+      - server
+    environment:
+      QUEUES: "scheduled_queries,schemas"
+      WORKERS_COUNT: 1
+  adhoc_worker:
+    <<: *redash-service
+    command: worker
+    depends_on:
+      - server
+    environment:
+      QUEUES: "queries"
+      WORKERS_COUNT: 2
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+  postgres:
+    image: pgautoupgrade/pgautoupgrade:latest
+    env_file: /opt/redash/env
+    volumes:
+      - /opt/redash/postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+  nginx:
+    image: redash/nginx:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    links:
+      - server:redash
+    restart: always
+  worker:
+    <<: *redash-service
+    command: worker
+    environment:
+      QUEUES: "periodic,emails,default"
+      WORKERS_COUNT: 1
+```
+### Installation
+
+When running the Redash setup script (`setup.sh`), you might encounter the following error:
+
+``./setup.sh: 187: pwgen: not found``
+
+This error indicates that the `pwgen` utility is missing. To fix this, install `pwgen` on your system.
+
+Run:
+
+``` bash
+sudo apt update && sudo apt install -y pwgen
+```
+
+After installing `pwgen`, re-run the setup script in the `pwgen` directory:
+
+``` bash
+./setup.sh
+```
+
+### Mail Configuration
+
+To enable Redash to send emails (e.g., for alerts or password resets), you must configure your SMTP settings. Depending on your installation method, these environment variables might reside in a `.env` file (e.g., `/opt/redash/.env`).
+
+Add the following environment variables, replacing the placeholder values with your actual SMTP server details:
+
+```bash 
+REDASH_MAIL_SERVER=your_smtp_server_address
+REDASH_MAIL_PORT=your_smtp_port
+REDASH_MAIL_USE_TLS=true_or_false
+REDASH_MAIL_USE_SSL=true_or_false
+REDASH_MAIL_USERNAME=your_smtp_username
+REDASH_MAIL_PASSWORD=your_smtp_password
+REDASH_MAIL_DEFAULT_SENDER=your_default_sender_email
+```
+
+**Important:**
+
+-   Set `REDASH_MAIL_USE_TLS` to `true` if your SMTP server requires TLS.
+    
+-   Set `REDASH_MAIL_USE_SSL` to `true` if your SMTP server requires SSL.
+    
+-   Do not set both TLS and SSL to `true` simultaneously.
+    
+
+After updating your mail configuration, restart your Redash services to apply the changes (`docker-compose up -d`, running `docker-compose restart` won’t be enough as it won’t read changes to env file). To test email configuration, you can run `docker-compose run --rm server manage send_test_mail`.
 
 ## Usage 
 
-### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
+### Running a MySQL Instance with Docker Compose
+
+We will use a single container for our MySQL instance with Docker Compose. In your command line or terminal of your WSL2 machine, navigate to this project's directory, and into the `mysql` directory.
+
+```bash
+cd etl-ws-1/redash/mysql
+```
+
+#### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
 
 A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password  set up.
 
@@ -184,7 +281,6 @@ Navigate to the directory where this repository has been cloned This is where yo
 **2. Create the .env file:**
 
 In the project directory, create a new file named `.env` (no file extension). You can do this from the command line:
-
 ```
 touch .env
 ```
@@ -200,7 +296,7 @@ MYSQL_USER=root
 MYSQL_PASSWORD=your_mysql_password
 MYSQL_HOST=your_wsl2_ip_address
 MYSQL_DATABASE=ws_001
-MYSQL_PORT=3307
+MYSQL_PORT=3306
 
 ```
 -   **`MYSQL_USER`:** Your MySQL username.
@@ -249,8 +345,61 @@ The `.env` file contains sensitive information. It's _extremely important_ to pr
 
 This will tell Git to ignore the `.env` file.
 
-## License
+## Using Redash
 
-This project is licensed under the [MIT License](LICENSE).
+### Login to Redash
+
+Once the setup is complete and the Redash services are running, you can access the Redash web interface using your browser. By default, the Redash instance will be available at:
+
+http://localhost:5000/
+
+Open this URL in your web browser to start using Redash.
+
+### Connect to a Data Source
+
+Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "MySQL") with the appropriate credentials.
+
+![Connect to a Data Source](https://redash.io/assets/images/docs/gitbook/add-data-source.gif)
+
+### How to create a dashboard
+
+A dashboard is composed of widgets, which can be any visualization created from the query source page. The dashboard is created by clicking on the “New Dashboard” button on the homepage, assigning it a name, and then clicking on the “save” button.
+
+You can also, at any time, create a dashboard by clicking on the dropdown menu on the fixed navbar.
+
+After this, you will have an empty page with the dashboard name. The next steps will explain how to create the widgets to fill the dashboard.
+
+### Create query
+
+Redash comes with an interface to write and run queries on the platform.
+
+Just click on the “New Query” button, type a name for your query (otherwise, it will be considered a draft), copy and paste the query inside the text area, and click on the “save” button.
+
+![Create query](https://redash.io/assets/images/docs/gifs/dashboards/dashboards.gif)
+
+### Create visualizations for the query
+
+All saved queries by default have a ‘Table’ visualization created. You can create more visualizations after the query runs for the first time.
+
+The options are:
+
+- Chart
+- Cohort
+- Counter
+- Map
+- And more.
+
+Click on the “+ New Visualization” button, select the visualization type, set a name and options for the visualization, and then click “save”.
+
+Type the name of the query to see the visualizations available for the query.
+
+Choose the visualization, optionally set the widget’s size (Regular or Double), and click the “Add to Dashboard” button.
+
+![Create visualizations for the query](https://redash.io/assets/images/docs/gifs/visualization/new_viz.gif)
+
+
+## Documentation 
+Documentation for this project was made using [![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#).
+
 
 > Written with [StackEdit](https://stackedit.io/).
