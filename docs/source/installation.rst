@@ -119,7 +119,42 @@ Installing Ubuntu
 
 2. Launch Ubuntu from the Start menu and complete the installation by creating a new user account.
 
+Turning on Docker Desktop WSL 2
+"""""""""""""""""""""""""""""""
 
+**Important:** Uninstall any previous versions of Docker Engine and CLI installed through Linux distributions.
+
+1. Download and install the latest Docker Desktop for Windows.
+2. Follow the installation instructions and enable WSL 2 when prompted.
+3. Start Docker Desktop.
+4. Navigate to **Settings > General** and select **Use WSL 2 based engine**.
+5. Click **Apply & Restart**.
+
+Confirming Docker Installation
+""""""""""""""""""""""""""""""
+
+1. Open a WSL distribution (Ubuntu-24.04).
+2. Display the version and build number by entering:
+
+   .. code-block:: bash
+
+       docker --version
+
+
+.. image:: ../images/docker-v.png
+   :align: center
+   :width: 600px 
+
+3. Test the installation by running a simple built-in Docker image:
+
+   .. code-block:: bash
+
+       docker run hello-world
+
+.. image:: ../images/docker-hello-world.png
+   :align: center
+   :width: 600px 
+   
 Redash setup
 ^^^^^^^^^^^^^
 Redash is an open-source data collaboration platform that enables you to connect to any data source, visualize data and share it.
