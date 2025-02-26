@@ -414,4 +414,4 @@ Choose the visualization, optionally set the widget’s size (Regular or Double)
 ## Documentation 
 Documentation for this project was made using [![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#).
 
-A PDF version can be found in this project´s "docs/pdf" directory.  It can also be viewed through this link: https://etl-ws-1.readthedocs.io/en/latest/; or checked in  in this project´s "docs/source", where several *reStructuredText* (.rst) files are placed.
+A PDF version can be found in this project´s "docs/pdf" directory.  It can also be viewed through this link: https://etl-ws-1.readthedocs.io/en/latest/; or checked in this project´s "docs/source" directory, where several *reStructuredText* (.rst) files are placed.
