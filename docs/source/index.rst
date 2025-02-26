@@ -96,7 +96,7 @@ Steps Involved
       - Hires by country over years (USA, Brazil, Colombia, and Ecuador only)(multiline chart)    
    
 
-
+Contents
 
  .. toctree::
    :titlesonly:

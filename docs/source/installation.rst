@@ -14,7 +14,6 @@ Before you begin, ensure you have met the following requirements:
 - **Operating System:** Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
 - **Python:** 3.12.9
 - **IDE**
-- Free port (3306).
 
 Installation
 ------------
@@ -148,7 +147,7 @@ We are going to self-host Redash using the official setup script. For this you n
 This will clone the repository into a directory named ``redash`` (already existent inside this project´s directory)and change into that directory.
 
 Docker Compose Configuration
-----------------------------
+""""""""""""""""""""""""""""
 
 In addition, you need to add a Docker Compose file in your Redash directory to define the services required for running Redash. Navigate to the project repository cloned in your machine, and make sure a ``docker-compose.yml`` files is present with the following content:
 
@@ -274,7 +273,7 @@ After updating your mail configuration, restart your Redash services to apply th
 Usage
 -----
 
-Runnin a MySql Instance with Docker Compose
+Running a MySql Instance with Docker Compose
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will use a single container for our MySQL instance with Docke Compose. In your command line or terminal of your WSL2 machine, navigate to the this project´s directory, and into the ``mysql`` directory. 
@@ -392,6 +391,16 @@ available at:
 
 Open this URL in your web browser to start using Redash.
 
+Connect to a Data Source
+"""""""""""""""""""""""""
+
+Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "MySQL") with the appropriate credentials.
+
+.. image:: https://redash.io/assets/images/docs/gitbook/add-data-source.gif
+   :align: center
+   :width: 600px 
+
+
 How to create a dashboard
 """""""""""""""""""""""""
 
@@ -408,6 +417,9 @@ Redash comes with an interface to write and run queries on the platform.
 
 Just click on the “New Query” button, type a name to your query (otherwise it will be considered a draft), copy and paste the query inside of the text area and click on the “save” button.
 
+.. image:: https://redash.io/assets/images/docs/gifs/dashboards/dashboards.gif
+   :align: center
+   :width: 600px 
 
 Create visualizations for the query
 """""""""""""""""""""""""""""""""""
@@ -427,3 +439,8 @@ Click on the “+ New Visualization” button, select Visualization type, set a 
 Type the name of the query to see the visualizations available for the query.
 
 Choose the visualization, optionally set the widget’s size (Regular or Double) and click the “Add to Dashboard” button.
+
+
+.. image:: https://redash.io/assets/images/docs/gifs/visualization/new_viz.gif
+   :align: center
+   :width: 600px 
