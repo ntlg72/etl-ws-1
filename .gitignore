@@ -1,5 +1,5 @@
 #Ignore virtual enviroment
 venv/
 
-#Ignore MySQL credentials
+#Ignore PostgresSQL credentials
 .env
