@@ -253,21 +253,21 @@ Load
 """"
 A SQLite engine object is created again using the module `get_connection` located in the project´s ``/src/connection/db_utils.py`` script. Then, a connection object is created by connecting the engine.
 
-.. image:: ../images/engine_conn.png
-   :align: center
-   :width: 500px 
+   .. image:: ../images/engine_conn.png
+      :align: center
+      :width: 500px 
 
 A ``insert_full_df`` function is defined to insert data from the ``df`` Dataframe into a PostgreSQL database using SQLAlchemy, handling the insertion in two ways: first, it inserts the data in batches to improve performance and stability, and second, it provides a function to insert the entire DataFrame. Both functions use a SQLAlchemy engine configured with environment variables for the database connection, and handle transactions and errors in a robust way.
 
 Its arguments are a  DataFrame (``df``), a table name (``table_name``), an SQLAlchemy engine (``engine``), and a batch size (``batch_size``) as input. It checks if the engine is available, and if so, it attempts to insert the DataFrame into the specified table in batches within a transaction. The DataFrame is divided into smaller chunks based on the ``batch_size``, and each chunk is appended to the database table using ``to_sql``. If any error occurs during the insertion of a batch, the function catches the exception, calculates the batch number where the error occurred, and prints an error message, while the transaction context ensures a rollback. 
 
 
-.. image:: ../images/hires_clean.png
-   :align: center
-   :width: 500px 
+   .. image:: ../images/hirees_clean.png
+      :align: center
+      :width: 500px 
 
 All regissters were inserted into the "hires_clean" table. To close the connection to de database the module ``close_connection``, located in the project´s ``/src/connection/db_utils.py`` script, is used. Its argument is the engine defined earlier.
 
-.. image:: ../images/close_conn1.png
-   :align: center
-   :width: 500px 
+   .. image:: ../images/close_conn1.png
+      :align: center
+      :width: 500px 
