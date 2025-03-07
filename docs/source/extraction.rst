@@ -132,7 +132,7 @@ Now, a SQLite engine object is created using the module `get_connection` located
 
 .. image:: ../images/engine_conn.png
    :align: center
-   :width: 600px 
+   :width: 500px 
 
 Reading the dataset and transforming it into a dataframe
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,14 +166,15 @@ To accomplish this practice the module ``close_connection`` located in the proje
 
 .. image:: ../images/close_conn1.png
    :align: center
-   :width: 600px 
+   :width: 500px 
+
 
 
 .. tip::
 
-Verification of data insertion can be done through the query ``SELECT COUNT(*) FROM candidates_raw``. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
+      Verification of data insertion can be done through the query ``SELECT COUNT(*) FROM candidates_raw``. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
 
 
-   .. image:: ../images/select_count.png
-      :align: center
-      :width: 600px
+         .. image:: ../images/select_count.png
+            :align: center
+            :width: 600px
