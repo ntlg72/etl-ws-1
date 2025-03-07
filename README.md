@@ -246,6 +246,8 @@ The file works in the following way:
         
     -   `postgres_password.txt`: Add the database password (e.g.,  `password123`).
 
+    -   Both these files are to be protected with `chmod 400` (Read-only for the owner user).
+
 2. Create the volume directory in the  `postgresql` directory :
 
 	  ```bash
