@@ -59,7 +59,7 @@ We get the shape of the data using Pandas ``.shape`` method.
 
 .. image:: ../images/shape.png
    :align: center
-   :width: 600px 
+   :width: 500px 
 
 
 The output returned means that this dataset has 50000 rows and 10 columns.
@@ -71,9 +71,9 @@ Data types
 We inspect the columns and their data types using the Pandas ``.info()`` method.
 
 
-.. image:: ../images/shape.png
+.. image:: ../images/info.png
    :align: center
-   :width: 600px 
+   :width: 500px 
 
 We can see that the DataFrame contains 3 columns with the "int64" data type 6 columns with the "object" data type, and o1 column with the "datetime64" data type. This data types are optimal for our analysis.
 
@@ -87,7 +87,7 @@ Pandas ``.nunique()`` method helps us to identify the number of distinct categor
 
 .. image:: ../images/nunique.png
    :align: center
-   :width: 600px 
+   :width: 500px 
 
 
 Implications
