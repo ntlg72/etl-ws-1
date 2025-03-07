@@ -217,7 +217,7 @@ To solve this problem using Pandas, we can follow these steps:
 
 .. note::
 
-    This code sorts a DataFrame (``df``) by the ``application_date`` column in ascending order (oldest to newest) using ``sort_values``, with the ``inplace=True`` parameter ensuring the changes are applied directly to the DataFrame. After sorting, it checks if the application_date column is monotonically increasing (i.e., each date is equal to or later than the previous one) using the is_monotonic_increasing attribute. The result (``True`` or ``False``) is stored in is_ordered and printed, confirming whether the dates are now in a strictly increasing order. This is useful for verifying the correct chronological sorting of data.
+   This code sorts a DataFrame (``df``) by the ``application_date`` column in ascending order (oldest to newest) using ``sort_values``, with the ``inplace=True`` parameter ensuring the changes are applied directly to the DataFrame. After sorting, it checks if the application_date column is monotonically increasing (i.e., each date is equal to or later than the previous one) using the ``is_monotonic_increasing`` attribute. The result (``True`` or ``False``) is stored in ``is_ordered`` and printed, confirming whether the dates are now in a strictly increasing order. This is useful for verifying the correct chronological sorting of data.
 
     .. image:: ../images/asc_dates.png
        :align: center
@@ -226,8 +226,10 @@ To solve this problem using Pandas, we can follow these steps:
 2. Drop duplicate entries, keeping only the first occurrence (in-place drop duplicates), which is flagged as hired.
 
 .. note::
-
-    This code sorts a DataFrame (``df``) by the ``application_date`` column in ascending order (oldest to newest) using ``sort_values``, with the ``inplace=True`` parameter ensuring the changes are applied directly to the DataFrame. After sorting, it checks if the application_date column is monotonically increasing (i.e., each date is equal to or later than the previous one) using the is_monotonic_increasing attribute. The result (``True`` or ``False``) is stored in is_ordered and printed, confirming whether the dates are now in a strictly increasing order. This is useful for verifying the correct chronological sorting of data.
+        
+    ``df[df['hired'] == True]`` filters the DataFrame to retain only rows where the hired column is ``True``. This removes all rows where hired is ``False`` or missing.
+           
+    ``.drop_duplicates(keep='first', inplace=False)`` removes duplicate rows from the filtered DataFrame. The ``keep='first'`` parameter ensures that only the first occurrence of each duplicate is kept, and subsequent duplicates are removed. The`` inplace=False`` parameter means the operation returns a new DataFrame instead of modifying the original one.
 
     .. image:: ../images/drop_emails.png
        :align: center
