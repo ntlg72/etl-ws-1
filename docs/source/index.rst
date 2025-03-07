@@ -104,7 +104,7 @@ Contents
 
    Install <installation>
    1. Extraction <ingestion>
-   2. Exploratory data analysis <migration>
+   2. Exploratory Data Analysis <migration>
    3. Transformation and Load <analysis>
    4. Visualizations <visualization>
 
