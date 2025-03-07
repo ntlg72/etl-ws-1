@@ -103,9 +103,9 @@ Contents
    :titlesonly:
 
    Install <installation>
-   1. Extraction <ingestion>
-   2. Exploratory Data Analysis <migration>
-   3. Transformation and Load <analysis>
+   1. Extraction <extraction>
+   2. Exploratory Data Analysis <eda>
+   3. Transformation and Load <transformation_load>
    4. Visualizations <visualization>
 
 
