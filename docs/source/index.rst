@@ -103,9 +103,9 @@ Contents
    :titlesonly:
 
    Install <installation>
-   1. Data ingestion <ingestion>
-   2. Data migration <migration>
-   3. Data analysis <analysis>
-   4. Data visualization <visualization>
+   1. Extraction <ingestion>
+   2. Exploratory data analysis <migration>
+   3. Transformation and Load <analysis>
+   4. Visualizations <visualization>
 
 
