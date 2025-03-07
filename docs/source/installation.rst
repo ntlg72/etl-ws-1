@@ -170,80 +170,11 @@ We are going to self-host Redash using the official setup script. For this you n
 
 This will clone the repository into a directory named ``redash`` (already existent inside this project´s directory)and change into that directory.
 
-Docker Compose Configuration
-""""""""""""""""""""""""""""
-
-In addition, you need to add a Docker Compose file in your Redash directory to define the services required for running Redash. Navigate to the project repository cloned in your machine, and make sure a ``docker-compose.yml`` files is present with the following content:
-
-.. code-block:: yaml
-
-    x-redash-service: &redash-service
-      image: redash/redash:__TAG__
-      depends_on:
-        - postgres
-        - redis
-      env_file: /opt/redash/env
-      restart: always
-    services:
-      server:
-        <<: *redash-service
-        command: server
-        ports:
-          - "5000:5000"
-        environment:
-          REDASH_WEB_WORKERS: 4
-      scheduler:
-        <<: *redash-service
-        command: scheduler
-        depends_on:
-          - server
-      scheduled_worker:
-        <<: *redash-service
-        command: worker
-        depends_on:
-          - server
-        environment:
-          QUEUES: "scheduled_queries,schemas"
-          WORKERS_COUNT: 1
-      adhoc_worker:
-        <<: *redash-service
-        command: worker
-        depends_on:
-          - server
-        environment:
-          QUEUES: "queries"
-          WORKERS_COUNT: 2
-      redis:
-        image: redis:7-alpine
-        restart: unless-stopped
-      postgres:
-        image: pgautoupgrade/pgautoupgrade:latest
-        env_file: /opt/redash/env
-        volumes:
-          - /opt/redash/postgres-data:/var/lib/postgresql/data
-        restart: unless-stopped
-      nginx:
-        image: redash/nginx:latest
-        ports:
-          - "80:80"
-        depends_on:
-          - server
-        links:
-          - server:redash
-        restart: always
-      worker:
-        <<: *redash-service
-        command: worker
-        environment:
-          QUEUES: "periodic,emails,default"
-          WORKERS_COUNT: 1
-
-
 
 Installation 
 """""""""""""
 
-IWhen running the Redash setup script (``setup.sh``), you might encounter the following error:
+When running the Redash setup script (``setup.sh``), you might encounter the following error:
 
 
 .. code-block:: text
@@ -266,8 +197,8 @@ After installing ``pwgen``, re-run the setup script in the ``pwgen`` directory:
 
 
 
-Mail Configuration
-""""""""""""""""""
+Mail Configuration (optional)
+"""""""""""""""""""""""""""""
 
 To enable Redash to send emails (e.g., for alerts or password resets), you must configure
 your SMTP settings. Depending on your installation method, these environment variables might

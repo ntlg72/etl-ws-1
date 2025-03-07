@@ -172,7 +172,7 @@ To accomplish this practice the module ``close_connection`` located in the proje
 
 .. tip::
 
-      Verification of data insertion can be done through the query ``SELECT COUNT(*) FROM candidates_raw``. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
+      Verification of data insertion can be done in the PostgreSQL command-line client through the query ``SELECT COUNT(*) FROM candidates_raw``. It should show the 50.000 number, according to the number of columns that running ``df`` showed during the data ingestion process.
 
 
          .. image:: ../images/select_count.png

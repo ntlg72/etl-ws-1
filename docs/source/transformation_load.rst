@@ -268,8 +268,17 @@ Its arguments are a  DataFrame (``df``), a table name (``table_name``), an SQLAl
       :align: center
       :width: 500px 
 
-All regissters were inserted into the "hires_clean" table. To close the connection to de database the module ``close_connection``, located in the project´s ``/src/connection/db_utils.py`` script, is used. Its argument is the engine defined earlier.
+All registers were inserted into the "hires_clean" table. To close the connection to de database the module ``close_connection``, located in the project´s ``/src/connection/db_utils.py`` script, is used. Its argument is the engine defined earlier.
 
    .. image:: ../images/close_conn1.png
       :align: center
       :width: 500px 
+
+.. tip::
+
+      Verification of data insertion can be done in the PostgreSQL command-line client through the query ``SELECT COUNT(*) FROM hires_clean``. It should show the 6.698 number, according to the shape of the processed DataFrame of the data.
+
+
+         .. image:: ../images/hirees_count.png
+            :align: center
+            :width: 600px

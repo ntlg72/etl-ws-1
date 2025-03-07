@@ -422,7 +422,7 @@ Open this URL in your web browser to start using Redash.
 
 ### Connect to a Data Source
 
-Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "MySQL") with the appropriate credentials.
+Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "PostgreSQL") with the appropriate credentials.
 
 ![Connect to a Data Source](https://redash.io/assets/images/docs/gitbook/add-data-source.gif)
 
