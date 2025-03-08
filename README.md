@@ -280,7 +280,7 @@ Or using a text editor.
 Open the `.env` file with a text editor and add the following lines, replacing the placeholders with your actual values:
 
 ```
-	PG_USER=your_postgres_user
+    PG_USER=your_postgres_user
     PG_PASSWORD=your_postgres_user_password
     PG_HOST=your_wsl2_ip_address
     PG_PORT=5433
