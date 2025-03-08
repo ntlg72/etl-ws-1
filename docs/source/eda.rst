@@ -13,17 +13,11 @@ The process conducted in this section involves the application of an Exploratory
 Importing libraries
 """""""""""""""""""
 
-import os
-import sys
-import numpy as np 
-import pandas as pd
-import re
-import matplotlib.pyplot as plt
-import seaborn as sns
-from fuzzywuzzy import process
-import pycountry
-sys.path.append(os.path.abspath('../src'))
-from connection.db_utils import get_connection, close_connection
+- ``os and sys``: File system manipulation and import paths.
+- ``numpy and pandas``: Numerical and tabular data manipulation and analysis.
+- ``matplotlib and seaborn``: Data visualization.
+- ``sys.path.append``: Add custom paths to import modules.
+- ``connection.db_utils``: Custom functions to handle database utilities.
 
 
 Establishing the database connection

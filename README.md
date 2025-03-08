@@ -254,7 +254,7 @@ The PostgrSQL instance works with a `docker-compose.yml` file in the following w
    
 4.  Access the PostgreSQL command-line client:
 	```yaml
-	docker exec -it pg psql -U <your_user> -d ws_001 -p 5433
+	docker exec -it pg psql -U <your_user> -d ws_001 
 	```
 ### Setting up a .env file for PostgreSQL Credentials in WSL2 Ubuntu 24.04
 

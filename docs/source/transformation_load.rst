@@ -14,7 +14,6 @@ Importing libraries
 - ``os and sys``: File system manipulation and import paths.
 - ``numpy and pandas``: Numerical and tabular data manipulation and analysis.
 - ``re``: Text processing using regular expressions.
-- ``matplotlib and seaborn``: Data visualization.
 - ``fuzzywuzzy``: String comparison.
 - ``pycountry``: Geographical data handling and international standards.
 - ``sys.path.append``: Add custom paths to import modules.
