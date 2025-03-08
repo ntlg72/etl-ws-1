@@ -103,8 +103,9 @@ Contents
    :titlesonly:
 
    1. Extraction <extraction>
-   2. Exploratory Data Analysis <eda>
-   3. Transformation and Load <transformation_load>
-   4. Visualizations <visualization>
+   2. Exploratory Data Analysis: Part 1 <eda>
+   3. Exploratory Data Analysis: Part 2 <eda2>
+   4. Transformation and Load <transformation_load>
+   5. Visualizations <visualization>
 
 
