@@ -105,10 +105,10 @@ Dashboard results
 Conclusions
 """"""""""""
 
-1. The hiring percentages in different technology areas indicate that certain specialties, such as DevOps (12.5%) and System Administration (28.7%), are in significantly higher demand compared to other areas.
+1. The hiring percentages in different technology areas indicate that certain specialties, such as DevOps (12.5%) and System Administration (28.7%), are in significantly higher demand compared to other areas.This is interesting given the high count of candidates applying for these areas. The hiring percentages in DevOps and System Administration reflect their critical role in IT ecosystems, but the high applicant count suggests stiff competition and potential skill mismatches
 
 
-2. The slightly higher number of hires for interns and trainees suggests that the organization is investing in future talent, potentially focusing on developing employees from early career stages. This approach can be cost-effective and beneficial for building a strong organizational culture, as junior hires often bring fresh perspectives and innovation. Additionally, it may indicate a strategy to address high turnover in junior roles or support company growth by filling new positions with entry-level talent.  Also Interns and trainees tend to have lower salaries compared to more senior professionals, which can be attractive to the organization in terms of costs.
+2. The slightly higher number of hires for interns and trainees suggests that the organization could be investing in future talent, potentially focusing on developing employees from early career stages. This approach can be cost-effective and beneficial for building a strong organizational culture, as junior hires often bring fresh perspectives and innovation. Additionally, it may indicate a strategy to address high turnover in junior roles or support company growth by filling new positions with entry-level talent.  Also Interns and trainees tend to have lower salaries compared to more senior professionals, which can be attractive to the organization in terms of costs.
 
     At the same time, the balanced hiring across seniority levels shows that the organization is also valuing experienced professionals, ensuring stability and leadership. This equilibrium reflects a healthy organizational structure, where junior employees are supported by senior mentors, fostering a culture of learning and growth. Overall, the hiring pattern suggests a sustainable strategy that balances immediate needs with long-term talent development.
 
@@ -116,4 +116,13 @@ Conclusions
 3. Hiring numbers remained consistently high from 2018 to 2021, with a slight increase observed between 2018 and 2019. The apparent decrease in 2022 may be attributed to the limited data scope, as the dataset only includes information up to July 2022, rather than reflecting a full-year trend. This analysis highlights the dynamic nature of hiring patterns in response to external factors and underscores the importance of considering data limitations when interpreting trends.
 
 
-4. The hiring trends by Country Over Year reflect a clear response to external factors which drove a significant demand for technology roles in 2020. The subsequent decline may be linked to market saturation, economic stabilization, and the limitations of the dataset, which only covers the first half of 2022. 
+4. The hiring trends by Country Over Year reflect a clear response to external factors which drove a significant demand for technology roles in 2020. The subsequent decline may be linked to market saturation, economic stabilization, and momst importantly to *limitations of the dataset*, which only covers the first half of 2022. 
+
+
+    Hiring in Colombia remained stable through 2020, but fell sharply after 2021. This decline may be related to specific factors such as changes in the labor market or the impact of external events.
+
+    United States and Brazil: Although both countries show a decline towards the end of the period, the United States shows a small peak in 2020, while Brazil maintains more intermediate fluctuations.
+
+    Ecuador Shows Variability: Ecuador exhibits a pattern of ups and downs, highlighting its increase in 2019 and 2021, but ending with a decline in 2022.
+
+    U.S. Minor Outlying Islands: Although they start with the highest number of hires, they also show a steady decline by 2022.

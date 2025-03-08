@@ -102,7 +102,6 @@ Contents
  .. toctree::
    :titlesonly:
 
-   Install <installation>
    1. Extraction <extraction>
    2. Exploratory Data Analysis <eda>
    3. Transformation and Load <transformation_load>
