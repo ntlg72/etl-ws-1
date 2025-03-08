@@ -1,4 +1,5 @@
 
+
 # Workshop -001: Data engineer
 By **Natalia López Gallego**
 
@@ -12,7 +13,7 @@ Technologies utilized in this project include:
     
 -    
    ![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white): For interactive data analysis and visualization.
--   ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white): For database management.
+-   ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white): For database management.
 
 
 ## Table of Contents
@@ -21,12 +22,12 @@ Technologies utilized in this project include:
 - [Installation](#installation)
 	- [Python Virtual Environment & Dependencies](#python-virtual-environment--dependencies)
 		 - [Implementation](#implementation)
-	- [Installing WSL 2 and Docker for MySQL Deployment](#installing-wsl-2-and-docker-for-mysql-deployment)
+	- [Installing WSL 2 and Docker for PostgreSQL Deployment](#installing-wsl-2-and-docker-for-postgresql-deployment)
 		 - [Enabling WSL 2](#enabling-wsl-2)
 		 - [Installing Ubuntu](#installing-ubuntu)
   - [Turning on Docker Desktop WSL 2](#turning-on-docker-desktop-wsl-2)
 	- [Confirming Docker Installation](#confirming-docker-installation)
-- [Setting Up MySQL Database with Docker](#setting-up-mysql-database-with-docker)
+  - [Setting Up PostgreSQL Database with Docker](#setting-up-postgresql-database-with-docker)
 - [Usage](#usage)
 - [Documentation](#documentation)
 
@@ -84,7 +85,7 @@ Virtual environments are essential for modern Python development, providing isol
     pip list
     ```
 
-## Installing WSL 2 and Docker for MySQL Deployment
+## Installing WSL 2 and Docker for PostgreSQL Deployment
 
 WSL 2 (Windows Subsystem for Linux 2) provides a lightweight, virtualized Linux environment that integrates seamlessly with Windows, enabling developers to run Linux-based tools and applications with improved performance and compatibility. Using a Dockerized MySQL image within WSL 2 allows for consistent, isolated, and portable development environments.
 
@@ -145,72 +146,7 @@ We are going to self-host Redash using the official setup script. For this, you 
 
 This will clone the repository into a directory named `redash` (already existent inside this project’s directory) and change into that directory.
 
-### Docker Compose Configuration
 
-In addition, you need to add a Docker Compose file in your Redash directory to define the services required for running Redash. Navigate to the project repository cloned in your machine, and make sure a `docker-compose.yml` file is present with the following content:
-
-```yaml
-x-redash-service: &redash-service
-  image: redash/redash:__TAG__
-  depends_on:
-    - postgres
-    - redis
-  env_file: /opt/redash/env
-  restart: always
-services:
-  server:
-    <<: *redash-service
-    command: server
-    ports:
-      - "5000:5000"
-    environment:
-      REDASH_WEB_WORKERS: 4
-  scheduler:
-    <<: *redash-service
-    command: scheduler
-    depends_on:
-      - server
-  scheduled_worker:
-    <<: *redash-service
-    command: worker
-    depends_on:
-      - server
-    environment:
-      QUEUES: "scheduled_queries,schemas"
-      WORKERS_COUNT: 1
-  adhoc_worker:
-    <<: *redash-service
-    command: worker
-    depends_on:
-      - server
-    environment:
-      QUEUES: "queries"
-      WORKERS_COUNT: 2
-  redis:
-    image: redis:7-alpine
-    restart: unless-stopped
-  postgres:
-    image: pgautoupgrade/pgautoupgrade:latest
-    env_file: /opt/redash/env
-    volumes:
-      - /opt/redash/postgres-data:/var/lib/postgresql/data
-    restart: unless-stopped
-  nginx:
-    image: redash/nginx:latest
-    ports:
-      - "80:80"
-    depends_on:
-      - server
-    links:
-      - server:redash
-    restart: always
-  worker:
-    <<: *redash-service
-    command: worker
-    environment:
-      QUEUES: "periodic,emails,default"
-      WORKERS_COUNT: 1
-```
 ### Installation
 
 When running the Redash setup script (`setup.sh`), you might encounter the following error:
@@ -231,7 +167,7 @@ After installing `pwgen`, re-run the setup script in the `pwgen` directory:
 ./setup.sh
 ```
 
-### Mail Configuration
+### Mail Configuration (optional)
 
 To enable Redash to send emails (e.g., for alerts or password resets), you must configure your SMTP settings. Depending on your installation method, these environment variables might reside in a `.env` file (e.g., `/opt/redash/.env`).
 
@@ -260,13 +196,14 @@ After updating your mail configuration, restart your Redash services to apply th
 
 ## Usage 
 
-### Running a MySQL Instance with Docker Compose
+### Running a PostgreSQL Instance with Docker Compose
 
-We will use a single container for our MySQL instance with Docker Compose. In your command line or terminal of your WSL2 machine, navigate to this project's directory, and into the `mysql` directory.
+We will use a single container for our PostgreSQL instance with Docker Compose. In your command line or terminal of your WSL2 machine, navigate to this project's directory, and into the `postgresql` directory.
 
 ```bash
-cd etl-ws-1/redash/mysql
+cd etl-ws-1/postgresql
 ```
+<<<<<<< HEAD
 Now you are going to update the existent `docker-compose.yml`. You must change the default MySQL credentials to suit your needs. Locate the database service section in your Docker Compose file and update the following environment variables with your own credentials:
 
 - **MYSQL_USER:** The username to connect to your database.
@@ -282,6 +219,59 @@ To access the MySQL container’s shell:
 `docker exec -it mysql-db-1 mysql -u <user> -p <user_password> `
 
 ### Setting up a .env file for MySQL Credentials in WSL2 Ubuntu 24.04
+=======
+Now you are going to update the existent `docker-compose.yml`. You must change the default PostgreSQL credentials to suit your needs. Locate the database service section in your Docker Compose file and update the following environment variables with your own credentials:
+
+The file works in the following way:
+
+1.  **Database Initialization**:
+    
+    -   When the container starts, PostgreSQL reads the username and password from the secrets files (`postgres_user.txt`  and  `postgres_password.txt`).
+        
+    -   It creates a database named  `ws_001`  using the provided credentials.
+    
+2.  **Data Persistence**:
+    
+    -   The database data is stored in the local directory  `./my_db`  on the host machine, ensuring it persists across container restarts or deletions.
+        
+3.  **Accessing the Database**:
+    
+    -   External applications can connect to the database using  `localhost:5433`  (or the host's IP address) with the credentials specified in the secrets files.
+
+### **Steps to Use:**
+
+1.  Create the secrets files in the `postgresql` directory:
+    
+    -   `postgres_user.txt`: Add the database username (e.g.,  `admin`).
+        
+    -   `postgres_password.txt`: Add the database password (e.g.,  `password123`).
+
+    -   Both these files are to be protected with `chmod 400` (Read-only for the owner user).
+
+2. Create the volume directory in the  `postgresql` directory :
+
+	  ```bash
+	 mkdir my_db
+	```
+
+	##### **Example Directory Structure:**
+	├── docker-compose.yml
+	├── postgres_user.txt
+	├── postgres_password.txt
+	└── my_db/
+        
+3.  Run the Docker Compose file:
+    
+	  ```bash
+	 docker-compose up -d
+	```
+   
+4.  Access the PostgreSQL command-line client:
+	```yaml
+	docker exec -it pg psql -U <your_user> -d ws_001 -p 5433
+	```
+### Setting up a .env file for PostgreSQL Credentials in WSL2 Ubuntu 24.04
+>>>>>>> 5eeae01 (readme updated)
 
 A `.env` file is needed to store your MySQL credentials securely, including the WSL2 IP address and the password  set up.
 
@@ -300,23 +290,22 @@ touch .env
 
 Or using a text editor.
 
-**3. Add your MySQL credentials to the .env file:**
+**3. Add your PostgreSQL credentials to the .env file:**
 
 Open the `.env` file with a text editor and add the following lines, replacing the placeholders with your actual values:
 
 ```
-MYSQL_USER=root
-MYSQL_PASSWORD=your_mysql_password
-MYSQL_HOST=your_wsl2_ip_address
-MYSQL_DATABASE=ws_001
-MYSQL_PORT=3306
-
+	PG_USER=your_postgres_user
+    PG_PASSWORD=your_postgres_user_password
+    PG_HOST=your_wsl2_ip_address
+    PG_PORT=5433
+    PG_DATABASE=ws_001
 ```
--   **`MYSQL_USER`:** Your MySQL username.
--   **`MYSQL_PASSWORD`:** The password you set for your MySQL user.
--   **`MYSQL_HOST`:** This is _crucial_. You need the IP address of your WSL2 instance. See step 4 below to find this.
--   **`MYSQL_DATABASE`:** The MySQL database created with the doccker command-
--   **`MYSQL_PORT`:** The port MySQL is listening on. The one 3307.
+-   **`PG_USER`:** Your PostgreSQL username.
+-   **`PG_PASSWORD`:** The password you set for your PostgreSQL user.
+-   **`PG_HOST`:** This is _crucial_. You need the IP address of your WSL2 instance. See step 4 below to find this.
+-   **`PG_DATABASE`:** The PostgreSQL database created with the docker compose file.
+-   **`PG_PORT`:** The port MySQL is listening on port 5433 according to our docker compose file.
 
 **4. Find your WSL2 IP Address:**
 
@@ -370,7 +359,7 @@ Open this URL in your web browser to start using Redash.
 
 ### Connect to a Data Source
 
-Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "MySQL") with the appropriate credentials.
+Before you can write queries, you need to connect Redash to a data source. Navigate to the 'Settings' and add your data source (select "PostgreSQL") with the appropriate credentials.
 
 ![Connect to a Data Source](https://redash.io/assets/images/docs/gitbook/add-data-source.gif)
 

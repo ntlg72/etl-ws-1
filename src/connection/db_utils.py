@@ -1,26 +1,33 @@
-import os
 from dotenv import load_dotenv
+import os
 from sqlalchemy import create_engine
-import pandas as pd
 
-def get_db_connection():
+def get_connection():
     load_dotenv()
-    user = os.getenv('MYSQL_USER')
-    password = os.getenv('MYSQL_PASSWORD')
-    host = os.getenv('MYSQL_HOST')
-    port = os.getenv('MYSQL_PORT')
-    dbname = os.getenv('MYSQL_DB')
-    db_url = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}"
+    user = os.getenv('PG_USER')
+    password = os.getenv('PG_PASSWORD')
+    host = os.getenv('PG_HOST')
+    port = os.getenv('PG_PORT')
+    dbname = os.getenv('PG_DATABASE')
+
+    
+    db_url = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
 
     try:
         engine = create_engine(db_url)
-        connection = engine.connect()
-        print("Connected to the database successfully")
-        return connection
+        print("Engine created succesfully")
+        return engine
     except Exception as e:
         print(f"Error: {e}")
         return None
 
-def read_candidates_table(connection):
-    query = "SELECT * FROM candidates"
-    return pd.read_sql(query, connection)
+
+def close_connection(engine):
+    if engine:
+        try:
+            engine.dispose()
+            print("Engine connection closed.")
+        except Exception as e:
+            print(f"Error closing connection: {e}")
+    else:
+        print("No engine to close.")
